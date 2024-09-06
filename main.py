@@ -1,4 +1,5 @@
 import pandas as pd
+from pasta.base.annotate import expression
 from pulp import *
 
 # read data from csv file
@@ -58,21 +59,27 @@ def query_data_1(b, p, table, column):
 for b in block:
     for s in season:
         # limit the area
-        problem += (lpSum([combination[simulation((b, p, s))] for p in plant])
-                    <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+        expression_limit_area = 0
+        for p in plant:
+            if combination.get(str(simulation((b, p, s)))) is not None:
+                expression_limit_area += (combination[simulation((b, p, s))])
+
+        problem += expression_limit_area <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
 
         # limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E16,F1-F4，不能种大棚
         for i in range(16):
             j = i + 1
             area_name = f'E{j}'
             for m in range(35, 38):
-                if combination[str(simulation((area_name, m, s)))]:
+                if combination.get(str(simulation((area_name, m, s)))) is not None:
+                    print('ljssb1')
                     del combination[str(simulation((area_name, m, s)))]
         for i in range(4):
             j = i + 1
             area_name = f'F{j}'
             for m in range(35, 38):
-                if combination[str(simulation((area_name, m, s)))]:
+                if combination.get(str(simulation((area_name, m, s)))) is not None:
+                    print('ljssb2')
                     del combination[str(simulation((area_name, m, s)))]
 
         # limit the plant 食用菌38-41，只能第二季普通大鹏
@@ -82,8 +89,9 @@ for b in block:
                 m = j + 1
                 area_name = f'E{j}'
                 l = [area_name]
-            if combination[str(simulation((b, i, s)))]:
+            if combination.get(str(simulation((b, i, s)))) is not None:
                 if b not in l or s == 's1':
+                    print('ljssb3')
                     del combination[str(simulation((b, i, s)))]
 
         # limit the plant 水浇地第二季只能以上之一,大白菜35，红萝卜37，白萝卜36,D1-D8
@@ -109,23 +117,41 @@ for b in block:
             area_name = f'E{j}'
             l = [area_name]
         for i in plant:
-            if combination[str(simulation((b, i, s)))]:
+            if combination.get(str(simulation((b, i, s)))) is not None:
                 if b in l and i not in range(38, 42) and s == 's2':
+                    print('ljssb4')
                     del combination[str(simulation((b, i, s)))]
 
-        # limit the block 平旱地、梯田和山坡地每年适宜单季种植粮食类作物（水稻除外）
+        # limit the block 平旱地A1-A6、梯田B1-B14和山坡地C1-C6每年适宜单季种植粮食类作物（水稻除外）
+        if recon(b) == '平旱地' or recon(b) == '梯田' or recon(b) == '山坡地':
+            if s == 's2':
+                for p in plant:
+                    if combination.get(str(simulation((b, p, s)))) is not None:
+                        print('ljssb5')
+                        del combination[str(simulation((b, p, s)))]
+            for p in plant:
+                if p not in range(1, 16) and s == 's1':
+                    if combination.get(str(simulation((b, p, s)))) is not None:
+                        print('ljssb6')
+                        del combination[str(simulation((b, p, s)))]
+
+        # limit the block 水浇地D1-D8只能单季种植水稻，或两季蔬菜
+        # if recon(b) == '水浇地' and s == 's2':
 
 # = sum 植物price*面积*亩产量 - 植物cost*面积
 # the best condition 1_1
+
 expression = 0
 for b in block:
     for p in plant:
         for s in season:
-            expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
-                                * combination[simulation((b, p, s))]
-                                * query_data_1(b, p, price_data, 'max')
-                                - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
-                                * combination[simulation((b, p, s))])
+            if combination.get(str(simulation((b, p, s)))) is not None:
+                #print(combination.get(str(simulation((b, p, s)))))
+                expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
+                                    * combination[simulation((b, p, s))]
+                                    * query_data_1(b, p, price_data, 'max')
+                                    - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
+                                    * combination[simulation((b, p, s))])
 problem += expression
 
 problem.solve()
@@ -135,7 +161,7 @@ print("Max z = ", value(problem.objective))
 for v in problem.variables():
     if v.varValue != 0:
         print(f'{v.name} = {v.varValue}')
-   #print(f'{v.name} = {v.varValue}')
+# print(f'{v.name} = {v.varValue}')
 # print(production_data)
 # print(block)
 # print(plant)
