@@ -1,5 +1,4 @@
 import pandas as pd
-from h5py.h5a import delete
 from pulp import *
 
 # read data from csv file
@@ -30,45 +29,79 @@ problem = LpProblem("Problem", LpMaximize)
 block = list(area_data['地块名称'])
 plant = list(plant_data['作物编号'])
 area = list(area_data['地块面积/亩'])
+season = ['s1', 's2']
 
-combination = LpVariable.dict('comb', [str((b, p)) for b in block for p in plant], lowBound=0, cat='Continuous')
-print(combination["('A1', 1)"])
-print(combination)
-print(tuple("('A1', 1)"[1:-1].split(', '))[0])
+combination = LpVariable.dict('comb', [str((b, p, s)) for b in block for p in plant for s in season], lowBound=0,
+                              cat='Continuous')
+
 
 
 def simulation(t):
     e1 = str(t[0])
-    return tuple((e1, int(t[1])))
+    return str(tuple((e1, int(t[1]), t[2])))
+
+
+def recon(s):
+    dic = {'A': '平旱地', 'B': '梯田', 'C': '山坡地', 'D': '水浇地', 'E': '普通大棚', 'F': '智慧大棚'}
+    return dic[s[0]]
+
+# ljssb says that 以后要改return0
+def query_data_1(b, p, table, column):
+    if not table.query(f'作物编号=={p} & 地块类型 == "{recon(b)}"').empty:
+        if table.query(f'作物编号=={p} & 地块类型 == "{recon(b)}"')[column].iloc[0] is None:
+            return 0
+        return int(table.query(f'作物编号=={p} & 地块类型 == "{recon(b)}"')[column].iloc[0])
+    else:
+        return 0
 
 
 for b in block:
-    # limit the area
-    problem += (lpSum([combination[b, p] for p in plant])
-                <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+    for s in season:
+        #limit the area
+        problem += (lpSum([combination[simulation((b, p, s))] for p in plant])
+                    <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
 
-    # limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E15,F1-F4
-    for i in range(15):
-        j = i + 1
-        area_name = f'E{j}'
-        for m in range(35,38):
-            del combination[str(simulation((area_name, m)))]
+        #limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E15,F1-F4，不能种大棚
+        # for i in range(15):
+        #     j = i + 1
+        #     area_name = f'E{j}'
+        #     for m in range(35, 38):
+        #         if combination[str(simulation((area_name, m, s)))]:
+        #             del combination[str(simulation((area_name, m, s)))]
+        # for i in range(4):
+        #     j = i + 1
+        #     area_name = f'F{j}'
+        #     for m in range(35, 38):
+        #         if combination[str(simulation((area_name, m, s)))]:
+        #             del combination[str(simulation((area_name, m, s)))]
+
+        # limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E15,F1-F4，不能种大棚
 
 # = sum 植物price*面积*亩产量 - 植物cost*面积
 # the best condition 1_1
+expression = 0
 for b in block:
     for p in plant:
-        problem += lpSum([int((production_data.query(f'作物编号=={p} & 地块类型 == {b}'))['亩产量/斤'].iloc[0])]
-                         * combination[simulation((b, p))]
-                         * int(price_data.query(f'作物编号=={p} & 地块类型 == {b}')['max'].iloc[0])
-                         - int(cost_data.query(f'作物编号=={p} & 地块类型 == {b}')['种植成本/(元/亩)'].iloc[0])
-                         * combination[simulation((b, p))])
-    problem.solve()
+        for s in season:
+            expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
+                             * combination[simulation((b, p, s))]
+                             * query_data_1(b, p, price_data, 'max')
+                             - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
+                             * combination[simulation((b, p, s))])
+problem += expression
+
+problem.solve()
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
-for v in problem.variables():
-    print(f'{v.name} = {v.varValue}')
+# for v in problem.variables():
+#     print(f'{v.name} = {v.varValue}')
+# print(production_data)
+# print(block)
+# print(plant)
 
-phd = cost_data.query('作物编号 == 1 & 地块类型 == "平旱地"')
-print(int(phd['种植成本/(元/亩)'].iloc[0]))
+# for b in block:
+#     for p in plant:
+#         if query_data_1(b, p, production_data, '亩产量/斤') is None :
+#             print(b, p)
+
