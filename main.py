@@ -1,5 +1,4 @@
 import pandas as pd
-from pasta.base.annotate import expression
 from pulp import *
 
 # read data from csv file
