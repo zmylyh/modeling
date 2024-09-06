@@ -6,10 +6,13 @@ data1_1 = pd.read_csv('csv/1_1.csv')
 data1_2 = pd.read_csv('csv/1_2.csv')
 data2_1 = pd.read_csv('csv/2_1.csv')
 data2_2 = pd.read_csv('csv/2_2.csv')
+data_p = pd.read_csv('csv/production.csv')
 
 # condition
 cost_data = data2_2[['作物编号', '地块类型', '种植季次', '种植成本/(元/亩)']]
 production_data = data2_2[['作物编号', '地块类型', '种植季次', '亩产量/斤']]
+sales_data = data2_1[['种植地块','作物编号', '种植面积/亩', '种植季次']]
+production1_data = data_p[['作物编号', '产量']]
 
 
 def split(price):
@@ -134,22 +137,74 @@ for b in block:
                         print('ljssb6')
                         del combination[str(simulation((b, p, s)))]
 
-        # limit the block 水浇地D1-D8只能单季种植水稻，或两季蔬菜
-        #if recon(b) == '水浇地' and s == 's2':
+        # limit the block 水浇地D1-D8只能单季种植水稻16，或两季蔬菜17-37
+        if recon(b) == '水浇地':
+            for p in plant:
+                if p != 16 and p not in range(17, 38):
+                    if combination.get(str(simulation((b, p, s)))) is not None:
+                        print('ljssb7')
+                        del combination[str(simulation((b, p, s)))]
+                if p == 16 and s == 's2':
+                    if combination.get(str(simulation((b, p, s)))) is not None:
+                        print('ljssb8')
+                        del combination[str(simulation((b, p, s)))]
+                
+        
+        # limit the plant 水稻只能种在水浇地
+        if p == 16 and recon(b) != '水浇地':
+            for p in plant:
+                if combination.get(str(simulation((b, p, s)))) is not None:
+                    print('ljssb9')
+                    del combination[str(simulation((b, p, s)))]
+        
+            
 
-# = sum 植物price*面积*亩产量 - 植物cost*面积
+# = sum 植物price*面积*亩产量 - 植物cost*面积 + 植物price*(sum(亩产*今年面积)-sum(亩产*23面积))
 # the best condition 1_1
+
+def query_sales_data(b, p, s, table, col):
+    time = {"单季": "s1", "第一季": "s1", "第二季": "s2"}
+    if not table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}').empty:
+        if table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0] is None:
+            return 0
+        return int(table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0])
+    else:
+        return 0
+
+def current_production(p):
+    expression_1 = 0
+    for b_ in block:
+        for s_ in season:
+            if combination.get(str(simulation((b_, p, s_)))) is not None:
+                expression_1 += query_data_1(b_, p, production_data, '亩产量/斤') * combination[simulation((b_, p, s_))]
+    # print(expression_1)            
+    return expression_1
 
 expression = 0
 for b in block:
     for p in plant:
         for s in season:
             if combination.get(str(simulation((b, p, s)))) is not None:
+                c = current_production(p)
+                aaaa = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])
+                extra_prod = LpVariable(f'extra_prod_{b}_{p}_{s}', lowBound=0, cat='Continuous')
+                
+                # problem += extra_prod >= c - aaaa
+                problem += c >= aaaa
+                problem += extra_prod >= 0
                 expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
                                     * combination[simulation((b, p, s))]
                                     * query_data_1(b, p, price_data, 'max')
                                     - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
                                     * combination[simulation((b, p, s))])
+                - query_data_1(b, p, price_data, 'max') * (c - aaaa)
+                #if (int(current_production(b, p, s)) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) >= 0:
+                # expression -= query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) 
+            #print(current_production(b, p, s) - int(production1_data.query(f'作物编号 == {p}')['产量'].iloc[0]))
+                # if current_production(b, p, s)==0:
+                #     continue
+                # print(1)
+                # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
 problem += expression
 
 problem.solve()
