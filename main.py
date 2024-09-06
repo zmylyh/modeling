@@ -35,7 +35,6 @@ combination = LpVariable.dict('comb', [str((b, p, s)) for b in block for p in pl
                               cat='Continuous')
 
 
-
 def simulation(t):
     e1 = str(t[0])
     return str(tuple((e1, int(t[1]), t[2])))
@@ -44,6 +43,7 @@ def simulation(t):
 def recon(s):
     dic = {'A': '平旱地', 'B': '梯田', 'C': '山坡地', 'D': '水浇地', 'E': '普通大棚', 'F': '智慧大棚'}
     return dic[s[0]]
+
 
 # ljssb says that 以后要改return0
 def query_data_1(b, p, table, column):
@@ -57,25 +57,63 @@ def query_data_1(b, p, table, column):
 
 for b in block:
     for s in season:
-        #limit the area
+        # limit the area
         problem += (lpSum([combination[simulation((b, p, s))] for p in plant])
                     <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
 
-        #limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E15,F1-F4，不能种大棚
-        # for i in range(15):
-        #     j = i + 1
-        #     area_name = f'E{j}'
-        #     for m in range(35, 38):
-        #         if combination[str(simulation((area_name, m, s)))]:
-        #             del combination[str(simulation((area_name, m, s)))]
-        # for i in range(4):
-        #     j = i + 1
-        #     area_name = f'F{j}'
-        #     for m in range(35, 38):
-        #         if combination[str(simulation((area_name, m, s)))]:
-        #             del combination[str(simulation((area_name, m, s)))]
+        # limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E16,F1-F4，不能种大棚
+        for i in range(16):
+            j = i + 1
+            area_name = f'E{j}'
+            for m in range(35, 38):
+                if combination[str(simulation((area_name, m, s)))]:
+                    del combination[str(simulation((area_name, m, s)))]
+        for i in range(4):
+            j = i + 1
+            area_name = f'F{j}'
+            for m in range(35, 38):
+                if combination[str(simulation((area_name, m, s)))]:
+                    del combination[str(simulation((area_name, m, s)))]
 
-        # limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E15,F1-F4，不能种大棚
+        # limit the plant 食用菌38-41，只能第二季普通大鹏
+        for i in range(38, 42):
+            l = []
+            for j in range(16):
+                m = j + 1
+                area_name = f'E{j}'
+                l = [area_name]
+            if combination[str(simulation((b, i, s)))]:
+                if b not in l or s == 's1':
+                    del combination[str(simulation((b, i, s)))]
+
+        # limit the plant 水浇地第二季只能以上之一,大白菜35，红萝卜37，白萝卜36,D1-D8
+        if recon(b) == '水浇地' and s == 's2':
+            a = ((combination[str(simulation((b, 35, s)))] ==
+                  area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                 and (combination[str(simulation((b, 37, s)))] == 0)
+                 and (combination[str(simulation((b, 36, s)))] == 0))
+            b1 = ((combination[str(simulation((b, 36, s)))] ==
+                   area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                  and (combination[str(simulation((b, 35, s)))] == 0)
+                  and (combination[str(simulation((b, 37, s)))] == 0))
+            c = ((combination[str(simulation((b, 37, s)))] ==
+                  area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                 and (combination[str(simulation((b, 35, s)))] == 0)
+                 and (combination[str(simulation((b, 36, s)))] == 0))
+            problem += a or b1 or c
+
+        # limit the block 普通大棚第2季只能种食用菌38-41， E1-E16
+        l = []
+        for i in range(16):
+            j = i + 1
+            area_name = f'E{j}'
+            l = [area_name]
+        for i in plant:
+            if combination[str(simulation((b, i, s)))]:
+                if b in l and i not in range(38, 42) and s == 's2':
+                    del combination[str(simulation((b, i, s)))]
+
+        # limit the block 平旱地、梯田和山坡地每年适宜单季种植粮食类作物（水稻除外）
 
 # = sum 植物price*面积*亩产量 - 植物cost*面积
 # the best condition 1_1
@@ -84,18 +122,20 @@ for b in block:
     for p in plant:
         for s in season:
             expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
-                             * combination[simulation((b, p, s))]
-                             * query_data_1(b, p, price_data, 'max')
-                             - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
-                             * combination[simulation((b, p, s))])
+                                * combination[simulation((b, p, s))]
+                                * query_data_1(b, p, price_data, 'max')
+                                - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
+                                * combination[simulation((b, p, s))])
 problem += expression
 
 problem.solve()
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
-# for v in problem.variables():
-#     print(f'{v.name} = {v.varValue}')
+for v in problem.variables():
+    if v.varValue != 0:
+        print(f'{v.name} = {v.varValue}')
+   #print(f'{v.name} = {v.varValue}')
 # print(production_data)
 # print(block)
 # print(plant)
@@ -104,4 +144,3 @@ print("Max z = ", value(problem.objective))
 #     for p in plant:
 #         if query_data_1(b, p, production_data, '亩产量/斤') is None :
 #             print(b, p)
-
