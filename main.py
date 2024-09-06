@@ -81,7 +81,7 @@ for b in block:
                     print('ljssb2')
                     del combination[str(simulation((area_name, m, s)))]
 
-        # limit the plant 食用菌38-41，只能第二季普通大鹏
+        # limit the plant 食用菌38-41，只能第二季普通大棚
         for i in range(38, 42):
             l = []
             for j in range(16):
