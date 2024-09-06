@@ -42,7 +42,7 @@ def simulation(t):
 
 
 def recon(s):
-    dic = {'A': '平旱地', 'B': '梯田', 'C': '山坡地', 'D': '水浇地', 'E': '普通大棚', 'F': '智慧大棚'}
+    dic = {'A': '平旱地', 'B': '梯田', 'C': '山坡地', 'D': '水浇地', 'E': '普通大棚 ', 'F': '智慧大棚'}
     return dic[s[0]]
 
 
@@ -136,7 +136,7 @@ for b in block:
                         del combination[str(simulation((b, p, s)))]
 
         # limit the block 水浇地D1-D8只能单季种植水稻，或两季蔬菜
-        # if recon(b) == '水浇地' and s == 's2':
+        #if recon(b) == '水浇地' and s == 's2':
 
 # = sum 植物price*面积*亩产量 - 植物cost*面积
 # the best condition 1_1
@@ -146,7 +146,6 @@ for b in block:
     for p in plant:
         for s in season:
             if combination.get(str(simulation((b, p, s)))) is not None:
-                #print(combination.get(str(simulation((b, p, s)))))
                 expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
                                     * combination[simulation((b, p, s))]
                                     * query_data_1(b, p, price_data, 'max')
