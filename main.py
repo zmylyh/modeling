@@ -182,7 +182,7 @@ for b in block:
     for p in plant:
         for s1 in season:
             for s2 in season:
-                if combination.get(str(simulation((b, p, s)))) is not None:
+                if combination.get(str(simulation((b, p, s1)))) is not None and combination.get(str(simulation((b, p, s2)))) is not None:
                     if ord(s1[0]) - ord(s2[0]) == 1:
                         problem += (combination[str(simulation((b, p, s1)))] + combination[
                             str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
@@ -193,16 +193,23 @@ for b in block:
 # 10 豆类限制,1-5,17-19
 for b in block:
     for s1 in range(6, 21):
-        for p in range(1, 6) or range(17, 20):
-            for number in range(3):
-                if (combination.get(str(simulation(b, p, chr(ord(season[s1][0]) - 2) + str(number)))) is not None) and \
-                    (combination.get(str(simulation(b, p, chr(ord(season[s1][0]) - 1) + str(number)))) is not None) and \
-                    (combination.get(str(simulation(b, p, season[s1]))) is not None):
-                    area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
-                    a = ((combination[str(simulation(b, p, chr(ord(season[s1][0]) - 2) + str(number)))] == area)
-                         or (combination[str(simulation(b, p, chr(ord(season[s1][0]) - 1) + str(number)))] == area)
-                         or (combination[str(simulation(b, p, season[s1]))] == area))
-                    problem += a
+        for number in range(3):
+            total_1 = total_2 = total_3 = lpSum(0)
+            for p in range(1, 6) or range(17, 20):
+                if (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))) is not None) and \
+                (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))) is not None) and \
+                (combination.get(str(simulation((b, p, season[s1])))) is not None):
+                    total_1 += lpSum(combination[str(simulation((b, p, season[s1])))]) 
+                    total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
+                    total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
+            # print(type(total_1))
+            area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
+            ex1 = (total_1 == area)
+            ex2 = (total_2 == area)
+            ex3 = (total_3 == area)
+            
+            problem += (ex1) or (ex2) or (ex3)
+            # problem += ex1
             # if season[s1][1] == '0':
             #     for s in range((ord(season[s1][0])-2), (ord(season[s1][0]))):
             #         if combination.get(str(simulation((b, p, s)))):
