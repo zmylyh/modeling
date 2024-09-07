@@ -1,5 +1,6 @@
 import pandas as pd
 from pulp import *
+import re
 
 # read data from csv file
 data1_1 = pd.read_csv('csv/1_1.csv')
@@ -32,7 +33,13 @@ problem = LpProblem("Problem", LpMaximize)
 block = list(area_data['地块名称'])
 plant = list(plant_data['作物编号'])
 area = list(area_data['地块面积/亩'])
-season = ['s1', 's2']
+season = ['a0', 'a1', 'a2',
+          'b0', 'b1', 'b2',
+          'c0', 'c1', 'c2',
+          'd0', 'd1', 'd2',
+          'e0', 'e1', 'e2',
+          'f0', 'f1', 'f2',
+          'g0', 'g1', 'g2']
 
 combination = LpVariable.dict('comb', [str((b, p, s)) for b in block for p in plant for s in season], lowBound=0,
                               cat='Continuous')
@@ -92,12 +99,12 @@ for b in block:
                 area_name = f'E{j}'
                 l = [area_name]
             if combination.get(str(simulation((b, i, s)))) is not None:
-                if b not in l or s == 's1':
+                if b not in l or s[-1] == '1':
                     print('ljssb3')
                     del combination[str(simulation((b, i, s)))]
 
         # 3 limit the block 水浇地第二季只能以上之一,大白菜35，红萝卜37，白萝卜36,D1-D8
-        if recon(b) == '水浇地' and s == 's2':
+        if recon(b) == '水浇地' and s[-1] == '2':
             for p in plant:
                 if combination.get(str(simulation((b, p, s)))) is not None:
                     if p not in range(35, 38):
@@ -120,19 +127,19 @@ for b in block:
         # 4 limit the block 普通大棚第2季只能种食用菌38-41， E1-E16
         for i in plant:
             if combination.get(str(simulation((b, i, s)))) is not None:
-                if (recon(b) == '普通大棚 ') and (i not in range(38, 42)) and (s == 's2'):
+                if (recon(b) == '普通大棚 ') and (i not in range(38, 42)) and (s[-1] == '2'):
                     print('ljssb4')
                     del combination[str(simulation((b, i, s)))]
 
         # 5 limit the block 平旱地A1-A6、梯田B1-B14和山坡地C1-C6每年适宜单季种植粮食类作物（水稻除外）
         if recon(b) == '平旱地' or recon(b) == '梯田' or recon(b) == '山坡地':
-            if s == 's2':
+            if s[-1] == '2':
                 for p in plant:
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb5')
                         del combination[str(simulation((b, p, s)))]
             for p in plant:
-                if p not in range(1, 16) and s == 's1':
+                if p not in range(1, 16) and s[-1] == '0':
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb6')
                         del combination[str(simulation((b, p, s)))]
@@ -144,26 +151,18 @@ for b in block:
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb7')
                         del combination[str(simulation((b, p, s)))]
-                if p == 16 and s == 's2':
+                if p == 16 and s[-1] == '2':
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb8')
                         del combination[str(simulation((b, p, s)))]
                 if p in range(17,38):
                     if combination.get(str(simulation((b, p, s)))) is not None:
-                        a = ((combination[str(simulation((b, p, s)))] <=
-                        area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
-                          - (combination[str(simulation((b, 16, 's1')))]))
-                        problem += a
-                # rice_limit = LpVariable(f'rice_limit_{b}', cat='Binary')
-                # vegetable_limit = LpVariable(f'vegetable_limit_{b}', cat='Binary')
-                # problem += rice_limit + vegetable_limit <= 1
-                # if p!=16 and p in range(17, 38):
-                #     if combination.get(str(simulation((b, p, s)))) is not None:
-                       
-                #         problem += lpSum(combination[str(simulation((b, p, s)))]) <= (1-rice_limit)*area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
-                # if p==16:
-                #     if combination.get(str(simulation((b, p, s)))) is not None:
-                #         problem += lpSum(combination[str(simulation((b, p, s)))]) <= (1-vegetable_limit)*area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]    
+                        if s[-1] == "0":
+                            a = ((combination[str(simulation((b, p, s)))] <=
+                            area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                              - (combination[str(simulation((b, 16, s)))]))
+                            problem += a
+                    
         
         # 7 limit the plant 水稻只能种在水浇地
         if p == 16 and recon(b) != '水浇地':
@@ -175,23 +174,38 @@ for b in block:
         # 8 limit the plant 35-37只能种水浇地第二季s2
         for p in range(35, 38):
             if combination.get(str(simulation((b, p, s)))) is not None:
-                if recon(b) != '水浇地' or s != 's2':
+                if recon(b) != '水浇地' or s[-1] != '2':
                     print('ljssb10')
                     del combination[str(simulation((b, p, s)))]
+        
+# 9 不能连种
+for b in block:
+    for p in plant:
+        for s1 in season:
+            for s2 in season:
+                if combination.get(str(simulation((b, p, s)))) is not None:
+                    if int(s1[0]) - int(s2[0]) == 1:
+                        problem += (combination[str(simulation((b, p, s1)))] + combination[str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                # c = s[0]
+                # if int(c) > int('a'):
+                #     problem += (combination[str(simulation((b, p, s)))] == 0) or ()
+# 10 豆类限制
+
+            
         
             
 
 # = sum 植物price*面积*亩产量 - 植物cost*面积 + 植物price*(sum(亩产*今年面积)-sum(亩产*23面积))
 # the best condition 1_1
 
-def query_sales_data(b, p, s, table, col):
-    time = {"单季": "s1", "第一季": "s1", "第二季": "s2"}
-    if not table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}').empty:
-        if table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0] is None:
-            return 0
-        return int(table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0])
-    else:
-        return 0
+# def query_sales_data(b, p, s, table, col):
+#     time = {"单季": "s1", "第一季": "s1", "第二季": "s2"}
+#     if not table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}').empty:
+#         if table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0] is None:
+#             return 0
+#         return int(table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0])
+#     else:
+#         return 0
 
 def current_production(p):
     expression_1 = 0
@@ -233,9 +247,21 @@ problem.solve()
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
+def match_pattern(s):
+    m = re.match(r"comb_\('(\w+)',_(\d+),_'(\w+)'\)", s)
+    return m.group(1), int(m.group(2)), m.group(3)
+block = []
+plant = []
 for v in problem.variables():
     if v.varValue != 0:
         print(f'{v.name} = {v.varValue}')
+        block.append(match_pattern(v.name)[0])
+        plant.append(match_pattern(v.name)[1])
+df = pd.DataFrame({'地块名称': block, '作物编号': plant})
+df.to_csv('csv/result.csv')
+
+# match_pattern = re.match(r"comb_\('([^']*), \s*([^']*), \s*([^']*)'\)", )
+
 # print(f'{v.name} = {v.varValue}')
 # print(production_data)
 # print(block)
