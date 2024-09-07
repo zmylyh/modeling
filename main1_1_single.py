@@ -178,37 +178,37 @@ for b in block:
                     del combination[str(simulation((b, p, s)))]
 
 # 9 不能连种
-for b in block:
-    for p in plant:
-        for s1 in season:
-            for s2 in season:
-                if combination.get(str(simulation((b, p, s1)))) is not None and combination.get(str(simulation((b, p, s2)))) is not None:
-                    if ord(s1[0]) - ord(s2[0]) == 1:
-                        problem += (combination[str(simulation((b, p, s1)))] + combination[
-                            str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
-                                        0])
+# for b in block:
+#     for p in plant:
+#         for s1 in season:
+#             for s2 in season:
+#                 if combination.get(str(simulation((b, p, s1)))) is not None and combination.get(str(simulation((b, p, s2)))) is not None:
+#                     if ord(s1[0]) - ord(s2[0]) == 1:
+#                         problem += (combination[str(simulation((b, p, s1)))] + combination[
+#                             str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
+#                                         0])
                 # c = s[0]
                 # if int(c) > int('a'):
                 #     problem += (combination[str(simulation((b, p, s)))] == 0) or ()
 # 10 豆类限制,1-5,17-19
-for b in block:
-    for s1 in range(6, 21):
-        for number in range(3):
-            total_1 = total_2 = total_3 = lpSum(0)
-            for p in range(1, 6) or range(17, 20):
-                if (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))) is not None) and \
-                (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))) is not None) and \
-                (combination.get(str(simulation((b, p, season[s1])))) is not None):
-                    total_1 += lpSum(combination[str(simulation((b, p, season[s1])))]) 
-                    total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
-                    total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
-            # print(type(total_1))
-            area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
-            ex1 = (total_1 == area)
-            ex2 = (total_2 == area)
-            ex3 = (total_3 == area)
+# for b in block:
+#     for s1 in range(6, 21):
+#         for number in range(3):
+#             total_1 = total_2 = total_3 = lpSum(0)
+#             for p in range(1, 6) or range(17, 20):
+#                 if (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))) is not None) and \
+#                 (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))) is not None) and \
+#                 (combination.get(str(simulation((b, p, season[s1])))) is not None):
+#                     total_1 += lpSum(combination[str(simulation((b, p, season[s1])))])
+#                     total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
+#                     total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
+#             # print(type(total_1))
+#             area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
+#             ex1 = (total_1 == area)
+#             ex2 = (total_2 == area)
+#             ex3 = (total_3 == area)
             
-            problem += (ex1) or (ex2) or (ex3)
+#             problem += (ex1) or (ex2) or (ex3)
             # problem += ex1
             # if season[s1][1] == '0':
             #     for s in range((ord(season[s1][0])-2), (ord(season[s1][0]))):
@@ -263,8 +263,8 @@ for b in block:
             # print(1)
             # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
 problem += expression
-
-problem.solve()
+solver = PULP_CBC_CMD(threads=32)
+problem.solve(solver)
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
@@ -283,9 +283,7 @@ for v in problem.variables():
         block.append(match_pattern(v.name)[0])
         plant.append(match_pattern(v.name)[1])
 df = pd.DataFrame({'地块名称': block, '作物编号': plant})
-df.to_csv('csv/result.csv')
-
-# match_pattern = re.match(r"comb_\('([^']*), \s*([^']*), \s*([^']*)'\)", )
+df.to_csv('csv/result1_1.csv')
 
 # print(f'{v.name} = {v.varValue}')
 # print(production_data)

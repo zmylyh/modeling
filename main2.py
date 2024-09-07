@@ -1,7 +1,6 @@
 import pandas as pd
 from pulp import *
 import re
-from functools import lru_cache
 
 # read data from csv file
 data1_1 = pd.read_csv('csv/1_1.csv')
@@ -35,14 +34,12 @@ block = list(area_data['地块名称'])
 plant = list(plant_data['作物编号'])
 area = list(area_data['地块面积/亩'])
 season = ['a0', 'a1', 'a2',
-            'b0', 'b1', 'b2',
-            'c0', 'c1', 'c2',
-            'd0', 'd1', 'd2',
-            'e0', 'e1', 'e2',
-            'f0', 'f1', 'f2',
-            'g0', 'g1', 'g2']
-
-          
+          'b0', 'b1', 'b2',
+          'c0', 'c1', 'c2',
+          'd0', 'd1', 'd2',
+          'e0', 'e1', 'e2',
+          'f0', 'f1', 'f2',
+          'g0', 'g1', 'g2']
 
 combination = LpVariable.dict('comb', [str((b, p, s)) for b in block for p in plant for s in season], lowBound=0,
                               cat='Continuous')
@@ -51,11 +48,6 @@ combination = LpVariable.dict('comb', [str((b, p, s)) for b in block for p in pl
 def simulation(t):
     e1 = str(t[0])
     return str(tuple((e1, int(t[1]), t[2])))
-
-@lru_cache(maxsize=None)
-def cached_simulation(b,p,s):
-    return simulation((b,p,s))
-
 
 
 def recon(s):
@@ -185,7 +177,7 @@ for b in block:
                     print('ljssb10')
                     del combination[str(simulation((b, p, s)))]
 
-#9 不能连种
+# 9 不能连种
 for b in block:
     for p in plant:
         for s1 in season:
@@ -195,8 +187,8 @@ for b in block:
                         problem += (combination[str(simulation((b, p, s1)))] + combination[
                             str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
                                         0])
-
-#10 豆类限制,1-5,17-19
+                
+# 10 豆类限制,1-5,17-19
 for b in block:
     for s1 in range(6, 21):
         for number in range(3):
@@ -208,14 +200,14 @@ for b in block:
                     total_1 += lpSum(combination[str(simulation((b, p, season[s1])))]) 
                     total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
                     total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
-            
+            # print(type(total_1))
             area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
             ex1 = (total_1 == area)
             ex2 = (total_2 == area)
             ex3 = (total_3 == area)
             
-#             problem += (ex1) or (ex2) or (ex3)
-#             # problem += ex1
+            problem += (ex1) or (ex2) or (ex3)
+            # problem += ex1
             # if season[s1][1] == '0':
             #     for s in range((ord(season[s1][0])-2), (ord(season[s1][0]))):
             #         if combination.get(str(simulation((b, p, s)))):
@@ -241,55 +233,74 @@ def current_production(p):
                 expression_1 += query_data_1(b_, p, production_data, '亩产量/斤') * combination[simulation((b_, p, s_))]
     # print(expression_1)            
     return expression_1
-@lru_cache(maxsize=None)
-def cached_current_production(p):
-    return current_production(p)
-production_cache = {}
 
-def get_production(p):
-    if p not in production_cache:
-        production_cache[p] = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])
-    return production_cache[p]
-query_data_cache = {}
-
-def cached_query_data_1(b, p, data, column):
-    key = (b, p, column)
-    if key not in query_data_cache:
-        query_data_cache[key] = query_data_1(b, p, data, column)
-    return query_data_cache[key]
+def year_production(p, year):
+    yp = 0
+    for b in block:
+        current_season = [s for s in season if s[0] == chr(year + 96)]
+        for s in current_season:
+            if combination.get(str(simulation((b, p, s)))) is not None:
+                mul = 1.1 ** year
+                yp += query_data_1(b, p, production_data, '亩产量/斤') * combination[simulation((b, p, s))] * mul
+    return yp
 
 expression = 0
+total_cost = 0
+sale_change = 1.05
+prod_change = 1.1
+price_change = 1.05
+cost_change = 1.05
 for b in block:
     for p in plant:
         for s in season:
-            sim_result = cached_simulation(b, p, s)
-            if combination.get(str(sim_result)) is not None:
-                c = cached_current_production(p)
-                aaaa = get_production(p)
-                extra_prod = LpVariable(f'extra_prod_{b}_{p}_{s}', lowBound=0, cat='Continuous')
+            if combination.get(str(simulation((b, p, s)))) is not None:
+                year = (ord(s[0]) - 97) + 1 # ith year
+                # 增长速率调整
+                if p == 6 or p == 7:
+                    sale_change = 1.1 ** (year - 1)
+                else:
+                    sale_change = 1.05
+                prod_change = 1.1 ** (year - 1)
+                cost_change = 1.05 ** (year - 1)
+                if p in range(17, 38):
+                    # 蔬菜价格上升5%
+                    price_change = 1.05 ** (year - 1)
+                elif p in range(38, 42):
+                    # 食用菌价格下降5%
+                    price_change = 0.95 ** (year - 1)
+                total_cost += query_data_1(b, p, cost_data, '种植成本/(元/亩)') * cost_change \
+                                * combination[simulation((b, p, s))]
+                # expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
+                #                     * combination[simulation((b, p, s))]
+                #                     * query_data_1(b, p, price_data, 'max') * price_change
+                #                     - query_data_1(b, p, cost_data, '种植成本/(元/亩)') * cost_change
+                #                     * combination[simulation((b, p, s))])
 
-                problem += c <= aaaa
-                problem += extra_prod >= 0
-                expression += lpSum(cached_query_data_1(b, p, production_data, '亩产量/斤')
-                                    * combination[sim_result]
-                                    * cached_query_data_1(b, p, price_data, 'max')
-                                    - cached_query_data_1(b, p, cost_data, '种植成本/(元/亩)')
-                                    * combination[sim_result])
-                print(1)
+total_sale = 0
+for s in season:
+    y = (ord(s[0]) - 97) + 1
+    for p in plant:
+        if p == 6 or p == 7:
+            sale_change = 1.1 ** (year - 1)
+        else:
+            sale_change = 1.05
+        if p in range(17, 38):
+            # 蔬菜价格上升5%
+            price_change = 1.05 ** (year - 1)
+        elif p in range(38, 42):
+            # 食用菌价格下降5%
+            price_change = 0.95 ** (year - 1)
+
+        sale_var = LpVariable(f'sale_var_{p}', 0)
+        predict_sale = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]) * sale_change
+        a = (year_production(p, y) <= predict_sale and sale_var == year_production)
+        b = (year_production(p, y) >= predict_sale and sale_var == predict_sale)
+        problem += a or b
+        total_sale += sale_var * float(price_data.query(f'作物编号 == {p}')['max'].iloc[0]) * price_change
+expression += total_sale - total_cost
 
 problem += expression
-                # - query_data_1(b, p, price_data, 'max') * (c - aaaa)
-                # if (int(current_production(b, p, s)) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) >= 0:
-                # expression -= query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) 
-            # print(current_production(b, p, s) - int(production1_data.query(f'作物编号 == {p}')['产量'].iloc[0]))
-            # if current_production(b, p, s)==0:
-            #     continue
-            # print(1)
-            # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
-problem += expression
-solver = PULP_CBC_CMD(threads=16)
-#solver= PULP_CBC_CMD(maxSeconds=60)
-#solver = docplex.mp.solution.Solver()
+solver = PULP_CBC_CMD(threads=32)
 problem.solve(solver)
 
 print("Status: ", LpStatus[problem.status])
@@ -309,16 +320,4 @@ for v in problem.variables():
         block.append(match_pattern(v.name)[0])
         plant.append(match_pattern(v.name)[1])
 df = pd.DataFrame({'地块名称': block, '作物编号': plant})
-df.to_csv('csv/result.csv')
-
-# match_pattern = re.match(r"comb_\('([^']*), \s*([^']*), \s*([^']*)'\)", )
-
-# print(f'{v.name} = {v.varValue}')
-# print(production_data)
-# print(block)
-# print(plant)
-
-# for b in block:
-#     for p in plant:
-#         if query_data_1(b, p, production_data, '亩产量/斤') is None :
-#             print(b, p)
+df.to_csv('csv/result_2.csv')
