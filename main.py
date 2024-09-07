@@ -12,7 +12,7 @@ data_p = pd.read_csv('csv/production.csv')
 # condition
 cost_data = data2_2[['作物编号', '地块类型', '种植季次', '种植成本/(元/亩)']]
 production_data = data2_2[['作物编号', '地块类型', '种植季次', '亩产量/斤']]
-sales_data = data2_1[['种植地块','作物编号', '种植面积/亩', '种植季次']]
+sales_data = data2_1[['种植地块', '作物编号', '种植面积/亩', '种植季次']]
 production1_data = data_p[['作物编号', '产量']]
 
 
@@ -155,57 +155,70 @@ for b in block:
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb8')
                         del combination[str(simulation((b, p, s)))]
-                if p in range(17,38):
+                if p in range(17, 38):
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         if s[-1] == "0":
                             a = ((combination[str(simulation((b, p, s)))] <=
-                            area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
-                              - (combination[str(simulation((b, 16, s)))]))
+                                  area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                                 - (combination[str(simulation((b, 16, s)))]))
                             problem += a
-                    
-        
+
         # 7 limit the plant 水稻只能种在水浇地
         if p == 16 and recon(b) != '水浇地':
             for p in plant:
                 if combination.get(str(simulation((b, p, s)))) is not None:
                     print('ljssb9')
                     del combination[str(simulation((b, p, s)))]
-        
+
         # 8 limit the plant 35-37只能种水浇地第二季s2
         for p in range(35, 38):
             if combination.get(str(simulation((b, p, s)))) is not None:
                 if recon(b) != '水浇地' or s[-1] != '2':
                     print('ljssb10')
                     del combination[str(simulation((b, p, s)))]
-        
+
 # 9 不能连种
 for b in block:
     for p in plant:
         for s1 in season:
             for s2 in season:
                 if combination.get(str(simulation((b, p, s)))) is not None:
-                    if int(s1[0]) - int(s2[0]) == 1:
-                        problem += (combination[str(simulation((b, p, s1)))] + combination[str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                    if ord(s1[0]) - ord(s2[0]) == 1:
+                        problem += (combination[str(simulation((b, p, s1)))] + combination[
+                            str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
+                                        0])
                 # c = s[0]
                 # if int(c) > int('a'):
                 #     problem += (combination[str(simulation((b, p, s)))] == 0) or ()
-# 10 豆类限制
+# 10 豆类限制,1-5,17-19
+for b in block:
+    for s1 in range(6, 21):
+        for p in range(1, 6) or range(17, 20):
+            for number in range(3):
+                if (combination.get(str(simulation(b, p, chr(ord(season[s1][0]) - 2) + str(number)))) is not None) and \
+                    (combination.get(str(simulation(b, p, chr(ord(season[s1][0]) - 1) + str(number)))) is not None) and \
+                    (combination.get(str(simulation(b, p, season[s1]))) is not None):
+                    area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
+                    a = ((combination[str(simulation(b, p, chr(ord(season[s1][0]) - 2) + str(number)))] == area)
+                         or (combination[str(simulation(b, p, chr(ord(season[s1][0]) - 1) + str(number)))] == area)
+                         or (combination[str(simulation(b, p, season[s1]))] == area))
+                    problem += a
+            # if season[s1][1] == '0':
+            #     for s in range((ord(season[s1][0])-2), (ord(season[s1][0]))):
+            #         if combination.get(str(simulation((b, p, s)))):
 
-            
-        
-            
+            # = sum 植物price*面积*亩产量 - 植物cost*面积 + 植物price*(sum(亩产*今年面积)-sum(亩产*23面积))
+            # the best condition 1_1
 
-# = sum 植物price*面积*亩产量 - 植物cost*面积 + 植物price*(sum(亩产*今年面积)-sum(亩产*23面积))
-# the best condition 1_1
+            # def query_sales_data(b, p, s, table, col):
+            #     time = {"单季": "s1", "第一季": "s1", "第二季": "s2"}
+            #     if not table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}').empty:
+            #         if table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0] is None:
+            #             return 0
+            #         return int(table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0])
+            #     else:
+            #         return 0
 
-# def query_sales_data(b, p, s, table, col):
-#     time = {"单季": "s1", "第一季": "s1", "第二季": "s2"}
-#     if not table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}').empty:
-#         if table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0] is None:
-#             return 0
-#         return int(table.query(f'种植地块=={p} & 地块类型 == "{recon(b)}" & 种植季次 == {time[s]}')[col].iloc[0])
-#     else:
-#         return 0
 
 def current_production(p):
     expression_1 = 0
@@ -216,6 +229,7 @@ def current_production(p):
     # print(expression_1)            
     return expression_1
 
+
 expression = 0
 for b in block:
     for p in plant:
@@ -224,7 +238,7 @@ for b in block:
                 c = current_production(p)
                 aaaa = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])
                 extra_prod = LpVariable(f'extra_prod_{b}_{p}_{s}', lowBound=0, cat='Continuous')
-                
+
                 # problem += extra_prod >= c - aaaa
                 problem += c <= aaaa
                 problem += extra_prod >= 0
@@ -233,23 +247,27 @@ for b in block:
                                     * query_data_1(b, p, price_data, 'max')
                                     - query_data_1(b, p, cost_data, '种植成本/(元/亩)')
                                     * combination[simulation((b, p, s))])
-                #- query_data_1(b, p, price_data, 'max') * (c - aaaa)
-                #if (int(current_production(b, p, s)) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) >= 0:
+                # - query_data_1(b, p, price_data, 'max') * (c - aaaa)
+                # if (int(current_production(b, p, s)) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) >= 0:
                 # expression -= query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) 
-            #print(current_production(b, p, s) - int(production1_data.query(f'作物编号 == {p}')['产量'].iloc[0]))
-                # if current_production(b, p, s)==0:
-                #     continue
-                # print(1)
-                # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
+            # print(current_production(b, p, s) - int(production1_data.query(f'作物编号 == {p}')['产量'].iloc[0]))
+            # if current_production(b, p, s)==0:
+            #     continue
+            # print(1)
+            # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
 problem += expression
 
 problem.solve()
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
+
+
 def match_pattern(s):
     m = re.match(r"comb_\('(\w+)',_(\d+),_'(\w+)'\)", s)
     return m.group(1), int(m.group(2)), m.group(3)
+
+
 block = []
 plant = []
 for v in problem.variables():
