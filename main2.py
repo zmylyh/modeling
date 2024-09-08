@@ -293,7 +293,7 @@ for s in season:
 
         sale_var = LpVariable(f'sale_var_{p}', 0)
         predict_sale = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]) * sale_change
-        a = (year_production(p, y) <= predict_sale and sale_var == year_production)
+        a = (year_production(p, y) <= predict_sale and sale_var == year_production(p, y))
         b = (year_production(p, y) >= predict_sale and sale_var == predict_sale)
         problem += a or b
         total_sale += sale_var * float(price_data.query(f'作物编号 == {p}')['max'].iloc[0]) * price_change
