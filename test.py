@@ -75,7 +75,16 @@ def query_data_1(b, p, table, column):
 
 for b in block:
     for s in season:
-        # limit the area
+        expression_limit_area = 0
+        for p in plant:
+            if combination.get(str(simulation((b, p, s)))) is not None:
+                expression_limit_area += (combination[simulation((b, p, s))])
+        problem += expression_limit_area <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]      
+    
+    
+    
+    for s in season:
+        #limit the area
         expression_limit_area = 0
         for p in plant:
             if combination.get(str(simulation((b, p, s)))) is not None:
@@ -83,7 +92,9 @@ for b in block:
 
         problem += expression_limit_area <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
 
-        # 1 limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E16,F1-F4，不能种大棚
+            
+            
+        #1 limit the plant 大白菜35，红萝卜37，白萝卜36,E1-E16,F1-F4，不能种大棚
         for i in range(16):
             j = i + 1
             area_name = f'E{j}'
@@ -107,7 +118,7 @@ for b in block:
                 area_name = f'E{j}'
                 l = [area_name]
             if combination.get(str(simulation((b, i, s)))) is not None:
-                if b not in l or s[-1] == '1':
+                if b not in l or s[-1] == '1' or s[-1] == '0':
                     print('ljssb3')
                     del combination[str(simulation((b, i, s)))]
 
@@ -141,7 +152,7 @@ for b in block:
 
         # 5 limit the block 平旱地A1-A6、梯田B1-B14和山坡地C1-C6每年适宜单季种植粮食类作物（水稻除外）
         if recon(b) == '平旱地' or recon(b) == '梯田' or recon(b) == '山坡地':
-            if s[-1] == '2':
+            if s[-1] == '2' or s[-1] == '1':
                 for p in plant:
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb5')
@@ -159,7 +170,7 @@ for b in block:
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb7')
                         del combination[str(simulation((b, p, s)))]
-                if p == 16 and s[-1] == '2':
+                if p == 16 and (s[-1] == '2' or s[-1] == '1'):
                     if combination.get(str(simulation((b, p, s)))) is not None:
                         print('ljssb8')
                         del combination[str(simulation((b, p, s)))]
@@ -184,6 +195,14 @@ for b in block:
                 if recon(b) != '水浇地' or s[-1] != '2':
                     print('ljssb10')
                     del combination[str(simulation((b, p, s)))]
+        #11 种植面积不小于1
+        # for p in plant:
+        #     if recon(b) != '普通大棚 ' or recon(b) != '智慧大棚':
+        #         if combination.get(str(simulation((b, p, s)))) is not None:
+        #             problem += (combination[str(simulation((b, p, s)))] >= 1)
+        #     else:
+        #         if combination.get(str(simulation((b, p, s)))) is not None:
+        #             problem += (combination[str(simulation((b, p, s)))] >= 0.06)
 
 #9 不能连种
 for b in block:
@@ -195,27 +214,28 @@ for b in block:
                         problem += (combination[str(simulation((b, p, s1)))] + combination[
                             str(simulation((b, p, s2)))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[
                                         0])
+                        
 
 #10 豆类限制,1-5,17-19
-for b in block:
-    for s1 in range(6, 21):
-        for number in range(3):
-            total_1 = total_2 = total_3 = lpSum(0)
-            for p in range(1, 6) or range(17, 20):
-                if (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))) is not None) and \
-                (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))) is not None) and \
-                (combination.get(str(simulation((b, p, season[s1])))) is not None):
-                    total_1 += lpSum(combination[str(simulation((b, p, season[s1])))]) 
-                    total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
-                    total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
+# for b in block:
+#     for s1 in range(6, 21):
+#         for number in range(3):
+#             total_1 = total_2 = total_3 = lpSum(0)
+#             for p in range(1, 6) or range(17, 20):
+#                 if (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))) is not None) and \
+#                 (combination.get(str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))) is not None) and \
+#                 (combination.get(str(simulation((b, p, season[s1])))) is not None):
+#                     total_1 += lpSum(combination[str(simulation((b, p, season[s1])))]) 
+#                     total_2 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 1) + str(number))))])
+#                     total_3 += lpSum(combination[str(simulation((b, p, chr(ord(season[s1][0]) - 2) + str(number))))])
             
-            area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
-            ex1 = (total_1 == area)
-            ex2 = (total_2 == area)
-            ex3 = (total_3 == area)
+#             area = area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]
+#             ex1 = (total_1 == area)
+#             ex2 = (total_2 == area)
+#             ex3 = (total_3 == area)
             
 #             problem += (ex1) or (ex2) or (ex3)
-#             # problem += ex1
+            # problem += ex1
             # if season[s1][1] == '0':
             #     for s in range((ord(season[s1][0])-2), (ord(season[s1][0]))):
             #         if combination.get(str(simulation((b, p, s)))):
@@ -232,18 +252,48 @@ for b in block:
             #     else:
             #         return 0
 
+# 10 fix
+bean_crops = list(range(1, 6)) + list(range(17, 20))
 
-def current_production(p):
+y = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+for b in block:
+    for start_year in ['a', 'b', 'c', 'd', 'e']:
+        for num in range(3):
+            bean_planted = LpVariable(f'bean_planted_{b}_{start_year}_{num}', cat='Binary')
+            for year_offset in range(3):
+                if combination.get(str(simulation((b, p, y[int(y.index(start_year) + year_offset)]+str(num))))): 
+                    problem += lpSum([combination[str(simulation((b, p, y[int(y.index(start_year) + year_offset)]+str(num))))]
+                                    for p in bean_crops                                  
+                                    ] >= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0]*bean_planted)
+        
+        
+            problem += bean_planted >= 1
+ # 0 limit the block 0or 1or2
+for y in ['a', 'b', 'c', 'd', 'e', 'f', 'g']:
+    for b in block:
+        for p in plant:
+            if combination.get(str(simulation((b, p, y+'0')))) is not None and combination.get(str(simulation((b, p, y+'1')))) is not None and combination.get(str(simulation((b, p, y+'2')))) is not None:
+                a= ((combination[str(simulation((b, p, y+'0')))] <=
+                        area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                        and (combination[str(simulation((b, p, y+'1')))] == 0)
+                        and (combination[str(simulation((b, p, y+'2')))] == 0))
+                b = ((combination[str(simulation((b, p, y+'0')))] ==0)
+                        and (combination[str(simulation((b, p, y+'1')))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])
+                        and (combination[str(simulation((b, p, y+'2')))] <= area_data[area_data['地块名称'] == b]['地块面积/亩'].values[0])) 
+                problem += a or b
+
+print(combination)
+def current_production(p, y):
     expression_1 = 0
     for b_ in block:
-        for s_ in season:
-            if combination.get(str(simulation((b_, p, s_)))) is not None:
-                expression_1 += query_data_1(b_, p, production_data, '亩产量/斤') * combination[simulation((b_, p, s_))]
-    # print(expression_1)            
+        for num in range(3):
+            if combination.get(str(simulation((b_, p, y + str(num))))) is not None:
+                expression_1 += query_data_1(b_, p, production_data, '亩产量/斤') * combination[simulation((b_, p, y+str(num)))]
+    # print(expression_1)
     return expression_1
 @lru_cache(maxsize=None)
-def cached_current_production(p):
-    return current_production(p)
+def cached_current_production(p, y):
+    return current_production(p, y)
 production_cache = {}
 
 def get_production(p):
@@ -264,19 +314,34 @@ for b in block:
         for s in season:
             sim_result = cached_simulation(b, p, s)
             if combination.get(str(sim_result)) is not None:
-                c = cached_current_production(p)
-                aaaa = get_production(p)
-                extra_prod = LpVariable(f'extra_prod_{b}_{p}_{s}', lowBound=0, cat='Continuous')
-
-                problem += c <= aaaa
-                problem += extra_prod >= 0
+                # c = cached_current_production(p, s[0])
+                # aaaa = get_production(p)
+                # extra_prod = LpVariable(f'extra_prod_{b}_{p}_{s}', lowBound=0, cat='Continuous')
+                # problem += c <= aaaa
+                # problem += extra_prod >= 0
+                
+                #is_over = LpVariable('is_over', cat='Binary')
+                #problem += (is_over == 1 and c >= c_0) or (is_over == 0 and c <= c_0)
+                
                 expression += lpSum(cached_query_data_1(b, p, production_data, '亩产量/斤')
                                     * combination[sim_result]
                                     * cached_query_data_1(b, p, price_data, 'max')
                                     - cached_query_data_1(b, p, cost_data, '种植成本/(元/亩)')
                                     * combination[sim_result])
                 print(1)
-
+total_production = 0
+M = 100000
+for p in plant:
+    for y in ['a', 'b', 'c', 'd', 'e', 'f', 'g']:
+        c = cached_current_production(p,y) 
+        c_0 = get_production(p)
+        exceed = LpVariable(f'exceed_{p}_{y}',  lowBound=0, cat='Continuous')
+        is_exceed = LpVariable(f'is_exceed_{p}_{y}', cat='Binary')
+        problem += exceed <= (c - int(c_0)) + (1 - is_exceed) * M
+        problem += exceed >= (c - int(c_0)) - (1 - is_exceed) * M
+        problem += exceed <= is_exceed * M
+        problem += exceed >= 0
+        expression -=  cached_query_data_1(b, p, price_data, 'max') * exceed
 problem += expression
                 # - query_data_1(b, p, price_data, 'max') * (c - aaaa)
                 # if (int(current_production(b, p, s)) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])) >= 0:
@@ -286,11 +351,11 @@ problem += expression
             #     continue
             # print(1)
             # expression += query_data_1(b, p, price_data, 'max') * (current_production(b, p, s) - int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]))
-problem += expression
-solver = PULP_CBC_CMD(threads=16)
+
+#solver = PULP_CBC_CMD(threads=16)
 #solver= PULP_CBC_CMD(maxSeconds=60)
 #solver = docplex.mp.solution.Solver()
-problem.solve(solver)
+problem.solve()
 
 print("Status: ", LpStatus[problem.status])
 print("Max z = ", value(problem.objective))
@@ -303,12 +368,16 @@ def match_pattern(s):
 
 block = []
 plant = []
+vo = []
+season_re = []
 for v in problem.variables():
     if v.varValue != 0:
-        print(f'{v.name} = {v.varValue}')
+        # print(f'{v.name} = {v.varValue}')
         block.append(match_pattern(v.name)[0])
         plant.append(match_pattern(v.name)[1])
-df = pd.DataFrame({'地块名称': block, '作物编号': plant})
+        season_re.append(match_pattern(v.name)[2])
+        vo.append(v.varValue)
+df = pd.DataFrame({'地块名称': block, '作物编号': plant, '面积': vo, '季次': season_re})
 df.to_csv('csv/result.csv')
 
 # match_pattern = re.match(r"comb_\('([^']*), \s*([^']*), \s*([^']*)'\)", )

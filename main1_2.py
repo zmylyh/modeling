@@ -263,7 +263,7 @@ for b in block:
 for p in plant:
     c = current_production(p)
     c_0 = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0])
-    expression -= (c - c_0) * 0.5 * price_data.query(f'作物编号 == {p}')['max'].iloc[0] * is_over
+    expression -= (c - c_0) * 0.5 * float(price_data.query(f'作物编号 == {p}')['max'].iloc[0]) * is_over
 
 problem += expression
 solver = PULP_CBC_CMD(threads=32)
