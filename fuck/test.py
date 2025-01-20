@@ -275,7 +275,7 @@ expression = 0
 total_cost = 0
 sale_change = 1.05
 prod_change = 1.1
-price_change = 1.05
+price_change = 1
 cost_change = 1.05
 years = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 for b in block:
@@ -290,12 +290,6 @@ for b in block:
                     sale_change = 1.05
                 prod_change = 1.1 ** (year - 1)
                 cost_change = 1.05 ** (year - 1)
-                if p in range(17, 38):
-                    # 蔬菜价格上升5%
-                    price_change = 1.05 ** (year - 1)
-                elif p in range(38, 42):
-                    # 食用菌价格下降5%
-                    price_change = 0.95 ** (year - 1)
                 total_cost += query_data_1(b, p, cost_data, '种植成本/(元/亩)') * cost_change \
                                 * combination[simulation((b, p, s))]
                 # expression += lpSum(query_data_1(b, p, production_data, '亩产量/斤')
@@ -318,6 +312,8 @@ for year in range(1, 8):
         elif p in range(38, 42):
             # 食用菌价格下降5%
             price_change = 0.95 ** (year - 1)
+        else:
+            price_change = 1
 
         sale_var = LpVariable(f'sale_var_{p}_{year}', 0)
         predict_sale = int(data_p.query(f'作物编号 == {p}')['产量'].iloc[0]) * sale_change
