@@ -10,5 +10,6 @@ def getMedal():
     new['Total'] = new['Gold'] + new['Silver'] + new['Bronze'] + new['No medal']
     output = new[['Team', 'Year', 'Sport', 'Gold', 'Silver', 'Bronze', 'Total']]
     output.to_csv('newafter.csv', index=False)
+    return output
 
 getMedal()

@@ -1,8 +1,8 @@
-import data
+import data2
 import numpy as np
 from greymodel import *
 
-medal_data = data.getMedal()
+medal_data = data2.getMedal()
 medal_data['gs'] = medal_data['Gold'] / medal_data['Total']
 medal_data['ss'] = medal_data['Silver'] / medal_data['Total']
 medal_data['bs'] = medal_data['Bronze'] / medal_data['Total']
