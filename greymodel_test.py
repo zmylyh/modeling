@@ -23,54 +23,37 @@ def getX0(team, sport, medal_type):
         x0.append(r)
     return np.array(x0)
 
-result_G = []
-result_S = []
-result_B = []
-
-# for c in comb:
-#     team = c.Team
-#     sport = c.Sport
-#     isSuccess = True
-#     for m in ['Gold', 'Silver', 'Bronze']:
-#         try:
-#             x = getX0(team, sport, m)
-#             k = lambda_ks(x)
-#             x1 = sum_x1(x)
-#             z1 = aver_z1(x1)
-#             u = least_square_method(x, z1)
-#             # 预测
-#             x0_pre = prediction(u, x1, 8)
-#             # 误差分析
-#             delta_k, pho_k = error(x, x0_pre, u, k)
-#             # 打印信息
-#             print("模型预测值为：")
-#             print(x0_pre[:len(x)])
-#             print("相对误差为：")
-#             print(delta_k)
-#             print("级比误差为：")
-#             print(pho_k)
-#             print("1993年预测值为：")
-#             print(x0_pre[7])
-#         except:
-#             isSuccess = False
-#             break
+# 预测单个序列, 返回值：参数和预测序列
+def predictOnce(team, sport, medalType):
+    x = getX0(team, sport, medalType)
+    print('input:', x)
+    k = lambda_ks(x)
+    i = 1
+    try:
+        while k == (-1, -1):
+            print(f'+{i}:', end=' ')
+            k = lambda_ks(x + i)
+            x = x + i
+            i += 1
+    except:
+        pass
+    x1 = sum_x1(x)
+    z1 = aver_z1(x1)
+    u = least_square_method(x, z1)
+    # 预测
+    x0_pre = prediction(u, x1, 2) - i + 1
+    # 误差分析
+    delta_k, pho_k = error(x - i + 1, x0_pre, u, k[0])
+    # 打印信息
+    print("模型预测值为：")
+    print(x0_pre[len(x):])
+    print("相对误差为：")
+    print(delta_k)
+    print("级比误差为：")
+    print(pho_k)
+    return u, x0_pre[len(x):]
 
 team = 'Great Britain'
-sport = 'Diving'
+sport = 'Rowing'
 m = 'Gold'
-x = getX0(team, sport, m)
-k = lambda_ks(x)
-x1 = sum_x1(x)
-z1 = aver_z1(x1)
-u = least_square_method(x, z1)
-# 预测
-x0_pre = prediction(u, x1, 8)
-# 误差分析
-delta_k, pho_k = error(x, x0_pre, u, k)
-# 打印信息
-print("模型预测值为：")
-print(x0_pre[:len(x)])
-print("相对误差为：")
-print(delta_k)
-print("级比误差为：")
-print(pho_k)
+predictOnce(team, sport, m)
