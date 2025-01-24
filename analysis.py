@@ -9,10 +9,10 @@ from sklearn.decomposition import PCA
 
 sns.set_theme()
 
-medals = pd.read_csv('data2025/summerOly_medal_counts.csv', encoding='latin1')
-hosts = pd.read_csv('data2025/summerOly_hosts.csv', encoding='latin1')
-programs = pd.read_csv('data2025/summerOly_programs.csv', encoding='latin1')
-athletes = pd.read_csv('data2025/summerOly_athletes.csv', encoding='latin1')
+medals = pd.read_csv('data2025/summerOly_medal_counts.csv', encoding='UTF-8')
+hosts = pd.read_csv('data2025/summerOly_hosts.csv', encoding='UTF-8')
+programs = pd.read_csv('data2025/summerOly_programs.csv', encoding='UTF-8')
+athletes = pd.read_csv('data2025/summerOly_athletes.csv', encoding='UTF-8')
 hosts.columns = hosts.columns.str.replace('ï»¿', '')
 medals.columns = medals.columns.str.replace('ï»¿', '')
 programs.columns = programs.columns.str.replace('ï»¿', '')
