@@ -7,9 +7,11 @@ def lambda_ks(x0):
     n = len(x0)
     Thate = [np.exp(-2/(n+1)), np.exp(2/(n+1))]
     if min(lambda_k_arr) > Thate[0] and max(lambda_k_arr) < Thate[1]:
-        print("级比在可容覆盖内，可以使用GM(1,1)建模")
+        # print("级比在可容覆盖内，可以使用GM(1,1)建模")
+        pass
     else:
-        print("级比不在可容覆盖内！请对序列作变换处理！！")
+        # print("级比不在可容覆盖内！请对序列作变换处理！！")
+        return (-1, -1)
  
     return lambda_k_arr, Thate
  
@@ -38,6 +40,7 @@ def least_square_method(x0, z1):
  
 # 模型预测
 def prediction(u, x1, n):
+    n = len(x1) + n
     x1_k_add_1_ls = []
     x1_k_add_1_ls.append(x1[0])
     for i in range(1, n):
