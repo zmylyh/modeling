@@ -42,6 +42,7 @@ plt.title('Distribution of Medal Winning Rates')
 plt.show()
 
 # 主办国nb
+# ?
 host_advantage = []
 for _, row in hosts.iterrows():
     host_cols = row.index.tolist()
@@ -55,13 +56,34 @@ for _, row in hosts.iterrows():
                             (medals['NOC'].str.contains(host_country))]['Total'].values
         if len(host_medals) > 0:
             host_advantage.append(host_medals[0])
+        print(host_advantage)
 
-plt.boxplot([host_advantage, 
+plt.boxplot([host_medals, 
             medals[~medals['NOC'].isin(hosts['Host'])]['Total'].values],
-            labels=['Host Countries',''])
+            labels=['Host Countries','non'])
 plt.title('Host Country Advantage Analysis')
 plt.show()
 
 
+# 主办国分析
+hosts['Host'] = hosts['Host'].str.replace('Â', '').str.strip()
+host_counts = hosts['Host'].str.split(',').str[-1].str.strip().value_counts()
+
+plt.subplot(2, 1, 1)
+plt.pie(host_counts.values, labels=host_counts.index, autopct='%1.1f%%')
+plt.title('Olympic Host Countries Distribution')
+plt.show()
 
 
+host_years = hosts['Year'].astype(int).values
+host_total_medals = []
+for year in host_years:
+    total = medals[medals['Year'] == year]['Total'].sum()
+    host_total_medals.append(total)
+
+plt.plot(host_years, host_total_medals, marker='o')
+plt.title('Total Medals Trend in Olympic Years')
+plt.xlabel('Year')
+plt.ylabel('Total Medals')
+plt.grid(True)
+plt.show()
