@@ -18,10 +18,28 @@ comb = medal_data[['Team', 'Sport']].drop_duplicates()
 comb.to_csv('comb.csv', index=False)
 
 def getX0(team, sport, medal_type):
-    x0 = []
+    x0 = [0] * len(train_years)
+    real_sum = 0.0
+    real_count = 0
     for y in train_years:
-        r = medal_data.query(f"(Year==@y) and (Team==@team) and (Sport==@sport)")[type_dict[medal_type]].tolist()[0]
-        x0.append(r)
+        ith_year = (y - train_years[0]) // 4
+        try:
+            r = medal_data.query(f"(Team==@team) and (Year==@y) and (Sport==@sport)")[type_dict[medal_type]].tolist()[0]
+            real_sum += r
+            real_count += 1
+        except:
+            r = -1
+        x0[ith_year] = r
+    if real_count == 0:
+        # 如果一个都没有，抛出错误，必须是indexerror
+        raise IndexError
+    if real_sum == 0.0:
+        return np.array([0, 0, 0, 0, 0])
+    real_average = real_sum / real_count
+    # 否则填上平均值
+    for i in range(len(x0)):
+        if x0[i] == -1:
+            x0[i] = real_average
     return np.array(x0)
 
 # 预测单个序列, 返回值：参数和预测序列
@@ -97,7 +115,7 @@ for mt in ['Gold', 'Silver', 'Bronze']:
             if mt == 'Gold': gold_result.append(pre[0])
             if mt == 'Silver': silver_result.append(pre[0])
             if mt == 'Bronze': bronze_result.append(pre[0])
-            print(team, '|' , sport)
+            print(team, '|' , sport, '|', mt)
         except IndexError:
             if mt == 'Gold': gold_result.append(-1)
             if mt == 'Silver': silver_result.append(-1)
