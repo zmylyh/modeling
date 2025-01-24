@@ -14,7 +14,8 @@ type_dict = {
     'Silver': 'ss',
     'Bronze': 'bs'
 }
-comb = medal_data[['Team', 'Sport']].drop_duplicates(keep=False)
+comb = medal_data[['Team', 'Sport']].drop_duplicates()
+comb.to_csv('comb.csv', index=False)
 
 def getX0(team, sport, medal_type):
     x0 = []
@@ -26,12 +27,12 @@ def getX0(team, sport, medal_type):
 # 预测单个序列, 返回值：参数和预测序列
 def predictOnce(team, sport, medalType):
     x = getX0(team, sport, medalType)
-    print('input:', x)
+    # print('input:', x)
     k = lambda_ks(x)
     i = 1
     try:
         while k == (-1, -1):
-            print(f'+{i}:', end=' ')
+            # print(f'+{i}:', end=' ')
             k = lambda_ks(x + i)
             x = x + i
             i += 1
@@ -45,15 +46,64 @@ def predictOnce(team, sport, medalType):
     # 误差分析
     delta_k, pho_k = error(x - i + 1, x0_pre, u, k[0])
     # 打印信息
-    print("模型预测值为：")
-    print(x0_pre[len(x):])
-    print("相对误差为：")
-    print(delta_k)
-    print("级比误差为：")
-    print(pho_k)
+    # print("模型预测值为：")
+    # print(x0_pre[len(x):])
+    # print("相对误差为：")
+    # print(delta_k)
+    # print("级比误差为：")
+    # print(pho_k)
     return u, x0_pre[len(x):]
 
-team = 'Great Britain'
-sport = 'Rowing'
+def useParam(team, sport, medalType, param):
+    x = getX0(team, sport, medalType)
+    # print('input:', x)
+    k = lambda_ks(x)
+    i = 1
+    try:
+        while k == (-1, -1):
+            # print(f'+{i}:', end=' ')
+            k = lambda_ks(x + i)
+            x = x + i
+            i += 1
+    except:
+        pass
+    x1 = sum_x1(x)
+    z1 = aver_z1(x1)
+    # u = least_square_method(x, z1)
+    # 预测
+    x0_pre = prediction(param, x1, 2) - i + 1
+    # 误差分析
+    delta_k, pho_k = error(x - i + 1, x0_pre, param, k[0])
+    # 打印信息
+    # print("模型预测值为：")
+    # print(x0_pre[len(x):])
+    # print("相对误差为：")
+    # print(delta_k)
+    # print("级比误差为：")
+    # print(pho_k)
+    return x0_pre[len(x):]
+
+gold_result = []
+silver_result = []
+bronze_result = []
 m = 'Gold'
-predictOnce(team, sport, m)
+# param, pre = predictOnce('Great Britain', 'Rowing', m)
+for mt in ['Gold', 'Silver', 'Bronze']:
+    for row in comb.itertuples():
+        team = row.Team
+        sport = row.Sport
+        try:
+            param, pre = predictOnce(team, sport, mt)
+            if mt == 'Gold': gold_result.append(pre[0])
+            if mt == 'Silver': silver_result.append(pre[0])
+            if mt == 'Bronze': bronze_result.append(pre[0])
+            print(team, '|' , sport)
+        except IndexError:
+            if mt == 'Gold': gold_result.append(-1)
+            if mt == 'Silver': silver_result.append(-1)
+            if mt == 'Bronze': bronze_result.append(-1)
+
+comb['goldPre'] = gold_result
+comb['silverPre'] = silver_result
+comb['bronzePre'] = bronze_result
+comb.to_csv('pre.csv', index=False)
