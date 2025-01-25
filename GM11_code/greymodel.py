@@ -5,15 +5,15 @@ import pandas as pd
 def lambda_ks(x0):
     lambda_k_arr = x0[:-1]/x0[1:]
     n = len(x0)
-    Thate = [np.exp(-2/(n+1)), np.exp(2/(n+1))]
-    if min(lambda_k_arr) > Thate[0] and max(lambda_k_arr) < Thate[1]:
+    theta = [np.exp(-2/(n+1)), np.exp(2/(n+1))]
+    if min(lambda_k_arr) > theta[0] and max(lambda_k_arr) < theta[1]:
         # print("级比在可容覆盖内，可以使用GM(1,1)建模")
         pass
     else:
         # print("级比不在可容覆盖内！请对序列作变换处理！！")
         return (-1, -1)
  
-    return lambda_k_arr, Thate
+    return lambda_k_arr, theta
  
 # 产生累加序列
 def sum_x1(x0):

@@ -1,0 +1,1194 @@
+Team,pgold,psilver,pbronze,Total
+United States,64.0,44.0,30.0,138.0
+Norway,49.0,38.0,38.0,125.0
+Great Britain,32.0,30.0,50.0,112.0
+China,49.0,23.0,26.0,98.0
+Denmark,2.0,44.0,51.0,97.0
+Germany,11.0,25.0,58.0,94.0
+Russia,31.0,31.0,25.0,87.0
+Spain,33.0,20.0,29.0,82.0
+Canada,14.0,31.0,34.0,79.0
+Romania,36.0,20.0,21.0,77.0
+Japan,19.0,25.0,33.0,77.0
+France,23.0,25.0,25.0,73.0
+Australia,17.0,21.0,34.0,72.0
+Lithuania,0.0,31.0,40.0,71.0
+Dominican Republic,1.0,56.0,13.0,70.0
+Croatia,20.0,14.0,31.0,65.0
+Italy,18.0,14.0,31.0,63.0
+Botswana,2.0,9.0,48.0,59.0
+Tajikistan,48.0,0.0,7.0,55.0
+Serbia,20.0,14.0,19.0,53.0
+New Zealand,8.0,16.0,27.0,51.0
+Dominica,48.0,0.0,0.0,48.0
+Pakistan,48.0,0.0,0.0,48.0
+Netherlands,20.0,19.0,9.0,48.0
+Ukraine,7.0,25.0,11.0,43.0
+Czech Republic,7.0,4.0,32.0,43.0
+Sweden,10.0,14.0,19.0,43.0
+South Korea,11.0,12.0,20.0,43.0
+Poland,8.0,11.0,22.0,41.0
+Greece,7.0,3.0,31.0,41.0
+South Africa,11.0,10.0,19.0,40.0
+Philippines,10.0,23.0,7.0,40.0
+Colombia,0.0,23.0,17.0,40.0
+Estonia,12.0,13.0,14.0,39.0
+Belarus,21.0,7.0,11.0,39.0
+Switzerland,5.0,5.0,27.0,37.0
+Ireland,17.0,14.0,4.0,35.0
+Zimbabwe,0.0,35.0,0.0,35.0
+Bahrain,23.0,7.0,5.0,35.0
+Grenada,0.0,0.0,34.0,34.0
+San Marino,0.0,15.0,19.0,34.0
+Saint Lucia,17.0,17.0,0.0,34.0
+Korea,5.0,5.0,23.0,33.0
+Mexico,9.0,18.0,6.0,33.0
+Chile,15.0,18.0,0.0,33.0
+North Korea,19.0,11.0,3.0,33.0
+Argentina,24.0,3.0,6.0,33.0
+Brazil,7.0,8.0,17.0,32.0
+Azerbaijan,3.0,12.0,15.0,30.0
+Israel,1.0,5.0,23.0,29.0
+Finland,0.0,14.0,15.0,29.0
+Bulgaria,13.0,1.0,15.0,29.0
+Armenia,0.0,10.0,18.0,28.0
+Malaysia,0.0,4.0,24.0,28.0
+Austria,3.0,1.0,24.0,28.0
+Chinese Taipei,6.0,2.0,19.0,27.0
+Belgium,1.0,12.0,13.0,26.0
+Ecuador,7.0,9.0,10.0,26.0
+Georgia,6.0,7.0,13.0,26.0
+Cuba,6.0,4.0,16.0,26.0
+Hungary,9.0,10.0,6.0,25.0
+Kyrgyzstan,0.0,16.0,9.0,25.0
+Tunisia,2.0,20.0,2.0,24.0
+Iran,10.0,11.0,3.0,24.0
+Moldova,0.0,0.0,22.0,22.0
+DPR Korea,0.0,6.0,15.0,21.0
+Thailand,8.0,5.0,6.0,19.0
+Kosovo,15.0,2.0,2.0,19.0
+Uzbekistan,10.0,4.0,5.0,19.0
+Puerto Rico,10.0,0.0,7.0,17.0
+Venezuela,5.0,12.0,0.0,17.0
+Kazakhstan,0.0,3.0,14.0,17.0
+Great Britain-2,0.0,16.0,0.0,16.0
+IR Iran,4.0,8.0,4.0,16.0
+Great Britain-1,16.0,0.0,0.0,16.0
+Togo,0.0,0.0,16.0,16.0
+Jordan,8.0,8.0,0.0,16.0
+Turkey,1.0,2.0,13.0,16.0
+"Hong Kong, China",12.0,1.0,2.0,15.0
+Slovakia,3.0,7.0,5.0,15.0
+Slovenia,2.0,3.0,10.0,15.0
+India,0.0,11.0,3.0,14.0
+Singapore,0.0,0.0,14.0,14.0
+Türkiye,0.0,5.0,8.0,13.0
+Mauritius,0.0,0.0,13.0,13.0
+China-1,5.0,2.0,6.0,13.0
+Panama,0.0,13.0,0.0,13.0
+Latvia,3.0,0.0,10.0,13.0
+Indonesia,3.0,0.0,10.0,13.0
+Nigeria,0.0,1.0,11.0,12.0
+Albania,0.0,0.0,12.0,12.0
+Republic of Moldova,0.0,3.0,9.0,12.0
+AIN,0.0,7.0,5.0,12.0
+Portugal,4.0,4.0,3.0,11.0
+Egypt,0.0,2.0,9.0,11.0
+Algeria,5.0,0.0,6.0,11.0
+Syria,0.0,0.0,10.0,10.0
+Kenya,5.0,2.0,3.0,10.0
+United States-1,6.0,0.0,3.0,9.0
+Czech Republic-1,0.0,4.0,5.0,9.0
+Czechia,3.0,0.0,6.0,9.0
+Cyprus,0.0,9.0,0.0,9.0
+Guatemala,4.0,0.0,4.0,8.0
+North Macedonia,0.0,8.0,0.0,8.0
+Niger,0.0,7.0,0.0,7.0
+Zambia,0.0,0.0,7.0,7.0
+Burkina Faso,0.0,0.0,7.0,7.0
+Morocco,5.0,0.0,2.0,7.0
+Cabo Verde,0.0,0.0,6.0,6.0
+EOR,0.0,0.0,6.0,6.0
+Individual Olympic Athletes,3.0,0.0,3.0,6.0
+Uganda,2.0,3.0,1.0,6.0
+United States-2,5.0,1.0,0.0,6.0
+Russia-2,5.0,0.0,0.0,5.0
+Japan-1,0.0,5.0,0.0,5.0
+Spain-2,5.0,0.0,0.0,5.0
+Sweden-2,0.0,5.0,0.0,5.0
+Spain-1,0.0,5.0,0.0,5.0
+Namibia,0.0,5.0,0.0,5.0
+Denmark-1,0.0,0.0,5.0,5.0
+France-2,0.0,0.0,4.0,4.0
+Russia-1,0.0,0.0,4.0,4.0
+Qatar,2.0,0.0,2.0,4.0
+France-1,0.0,4.0,0.0,4.0
+Gabon,0.0,4.0,0.0,4.0
+Ethiopia,0.0,4.0,0.0,4.0
+Indonesia-1,3.0,1.0,0.0,4.0
+Fiji,2.0,2.0,0.0,4.0
+Brazil-1,2.0,1.0,1.0,4.0
+Bermuda,3.0,0.0,0.0,3.0
+Ghana,0.0,0.0,3.0,3.0
+Peru,0.0,0.0,3.0,3.0
+Côte d'Ivoire,0.0,0.0,2.0,2.0
+Latvia-1,0.0,0.0,2.0,2.0
+Netherlands-1,0.0,0.0,2.0,2.0
+South Korea-1,0.0,0.0,2.0,2.0
+China-2,0.0,0.0,2.0,2.0
+Brazil-2,0.0,0.0,2.0,2.0
+Italy-1,0.0,2.0,0.0,2.0
+Iceland,0.0,2.0,0.0,2.0
+Cote d'Ivoire,1.0,0.0,1.0,2.0
+Germany-1,2.0,0.0,0.0,2.0
+Jamaica,0.0,0.0,1.0,1.0
+United Arab Emirates,0.0,0.0,1.0,1.0
+Montenegro,0.0,1.0,0.0,1.0
+Notavel,0.0,0.0,0.0,0.0
+Peri,0.0,0.0,0.0,0.0
+"Phalainis ton Thorichtou ""Psara""-3",0.0,0.0,0.0,0.0
+"Phalainis ton Thorichtou ""Hydra""-2",0.0,0.0,0.0,0.0
+Pettit-Poucet-6,0.0,0.0,0.0,0.0
+Persey,0.0,0.0,0.0,0.0
+Peri II,0.0,0.0,0.0,0.0
+Paula,0.0,0.0,0.0,0.0
+Peiraikos Syndesmos-2,0.0,0.0,0.0,0.0
+Pegaso,0.0,0.0,0.0,0.0
+Phoenix,0.0,0.0,0.0,0.0
+Patricia,0.0,0.0,0.0,0.0
+"Passaic Turnverein, Passaic",0.0,0.0,0.0,0.0
+Pasodoble,0.0,0.0,0.0,0.0
+"Philadelphia Turngemeinde, Philadelphia",0.0,0.0,0.0,0.0
+Pimm,0.0,0.0,0.0,0.0
+Pierre et Jean-3,0.0,0.0,0.0,0.0
+Pierre et Jean-4,0.0,0.0,0.0,0.0
+Pigoule,0.0,0.0,0.0,0.0
+Paraguay,0.0,0.0,0.0,0.0
+Pirouette-31,0.0,0.0,0.0,0.0
+Pirouette-5,0.0,0.0,0.0,0.0
+Pistoja/Firenze,0.0,0.0,0.0,0.0
+Plume-Patte-5,0.0,0.0,0.0,0.0
+Plume-patte-32,0.0,0.0,0.0,0.0
+Poland-1,0.0,0.0,0.0,0.0
+Poland-2,0.0,0.0,0.0,0.0
+Poland-3,0.0,0.0,0.0,0.0
+Polyteknisk Roklub-1,0.0,0.0,0.0,0.0
+Pop Art,0.0,0.0,0.0,0.0
+Partenope,0.0,0.0,0.0,0.0
+Panhellenios Gymnastikos Syllogos-1,0.0,0.0,0.0,0.0
+Papua New Guinea,0.0,0.0,0.0,0.0
+Pannonia RC/National RC,0.0,0.0,0.0,0.0
+Nurdug II,0.0,0.0,0.0,0.0
+Nykjbings paa Falster,0.0,0.0,0.0,0.0
+Oleander II,0.0,0.0,0.0,0.0
+Oleander XII,0.0,0.0,0.0,0.0
+Olen,0.0,0.0,0.0,0.0
+Olimpia,0.0,0.0,0.0,0.0
+Olle,0.0,0.0,0.0,0.0
+Olympion,0.0,0.0,0.0,0.0
+Oman,0.0,0.0,0.0,0.0
+Omas Helliniki P. S.,0.0,0.0,0.0,0.0
+Omilos Ereton Peiraios-2,0.0,0.0,0.0,0.0
+Omilos Ereton Smyrnis,0.0,0.0,0.0,0.0
+Oranje,0.0,0.0,0.0,0.0
+Orion,0.0,0.0,0.0,0.0
+Ormsund Roklub-2,0.0,0.0,0.0,0.0
+"Osborne Swimming Club, Manchester",0.0,0.0,0.0,0.0
+Oxalis,0.0,0.0,0.0,0.0
+Paka,0.0,0.0,0.0,0.0
+Paka V,0.0,0.0,0.0,0.0
+Pakaria,0.0,0.0,0.0,0.0
+Palau,0.0,0.0,0.0,0.0
+Palestine,0.0,0.0,0.0,0.0
+Pam,0.0,0.0,0.0,0.0
+Pampero,0.0,0.0,0.0,0.0
+Pan,0.0,0.0,0.0,0.0
+Pan II,0.0,0.0,0.0,0.0
+Pan-Hellenic Athletic Club,0.0,0.0,0.0,0.0
+Pandora,0.0,0.0,0.0,0.0
+Potomac Archers,0.0,0.0,0.0,0.0
+Posillipo III,0.0,0.0,0.0,0.0
+Primorka,0.0,0.0,0.0,0.0
+Potsdam,0.0,0.0,0.0,0.0
+Pousse-Moi Pas VII,0.0,0.0,0.0,0.0
+Roklubb Kbnhavn-2,0.0,0.0,0.0,0.0
+Roma,0.0,0.0,0.0,0.0
+Romania-1,0.0,0.0,0.0,0.0
+Romania-2,0.0,0.0,0.0,0.0
+Romolo,0.0,0.0,0.0,0.0
+Rose Pompon,0.0,0.0,0.0,0.0
+Rostock,0.0,0.0,0.0,0.0
+Rowing Club Castillon-3,0.0,0.0,0.0,0.0
+Roy,0.0,0.0,0.0,0.0
+Royal Club Nautique de Gand,0.0,0.0,0.0,0.0
+Rozenn-3,0.0,0.0,0.0,0.0
+Rush IV,0.0,0.0,0.0,0.0
+Rush V,0.0,0.0,0.0,0.0
+Rush VII,0.0,0.0,0.0,0.0
+Rwanda,0.0,0.0,0.0,0.0
+Saar,0.0,0.0,0.0,0.0
+Sabre,0.0,0.0,0.0,0.0
+Saga-2,0.0,0.0,0.0,0.0
+SagaII,0.0,0.0,0.0,0.0
+Saint Kitts and Nevis,0.0,0.0,0.0,0.0
+Saint Vincent and the Grenadines,0.0,0.0,0.0,0.0
+Salamander,0.0,0.0,0.0,0.0
+Salinero,0.0,0.0,0.0,0.0
+Samoa,0.0,0.0,0.0,0.0
+Sandra,0.0,0.0,0.0,0.0
+Sans Atout-1,0.0,0.0,0.0,0.0
+Santa Maria,0.0,0.0,0.0,0.0
+Sao Tome & Principe,0.0,0.0,0.0,0.0
+Sao Tome and Principe,0.0,0.0,0.0,0.0
+Roehampton-1,0.0,0.0,0.0,0.0
+Roddklubben af 1912-2,0.0,0.0,0.0,0.0
+Roddklubben af 1912-1,0.0,0.0,0.0,0.0
+Ralia,0.0,0.0,0.0,0.0
+Proteus II,0.0,0.0,0.0,0.0
+Pupilles de Neptune de Lille #1-3,0.0,0.0,0.0,0.0
+Pupilles de Neptune de Lille #2-1,0.0,0.0,0.0,0.0
+Pupilles de Neptune de Lille-1,0.0,0.0,0.0,0.0
+Qu'Importe,0.0,0.0,0.0,0.0
+Quand-Mme-2,0.0,0.0,0.0,0.0
+Quand-Mme-33,0.0,0.0,0.0,0.0
+Quando Quando,0.0,0.0,0.0,0.0
+Quicksilver-2,0.0,0.0,0.0,0.0
+"R.-V. Germania, Leitmeritz",0.0,0.0,0.0,0.0
+Racing Club de France,0.0,0.0,0.0,0.0
+Raili,0.0,0.0,0.0,0.0
+Ral-Club Barcelona,0.0,0.0,0.0,0.0
+Rambo,0.0,0.0,0.0,0.0
+Rika II,0.0,0.0,0.0,0.0
+Rampage,0.0,0.0,0.0,0.0
+Ravel,0.0,0.0,0.0,0.0
+Ravenswood Boat Club-2,0.0,0.0,0.0,0.0
+Red Dragon,0.0,0.0,0.0,0.0
+Red Indian,0.0,0.0,0.0,0.0
+Refugee Olympic Athletes,0.0,0.0,0.0,0.0
+Refugee Olympic Team,0.0,0.0,0.0,0.0
+Relampago,0.0,0.0,0.0,0.0
+Republic of the Congo,0.0,0.0,0.0,0.0
+Rhodesia,0.0,0.0,0.0,0.0
+Rhythm,0.0,0.0,0.0,0.0
+Riccar,0.0,0.0,0.0,0.0
+Rififi,0.0,0.0,0.0,0.0
+Nrnberg,0.0,0.0,0.0,0.0
+Milwaukee Athletic Club-1,0.0,0.0,0.0,0.0
+"Norwegier Turnverein, Brooklyn",0.0,0.0,0.0,0.0
+"Marinai della nave da guerra ""Varese""",0.0,0.0,0.0,0.0
+Marmi II-1,0.0,0.0,0.0,0.0
+Marshall Islands,0.0,0.0,0.0,0.0
+Marsouin-26,0.0,0.0,0.0,0.0
+Marsouin-8,0.0,0.0,0.0,0.0
+Martha-1,0.0,0.0,0.0,0.0
+Martha-27,0.0,0.0,0.0,0.0
+Maryke,0.0,0.0,0.0,0.0
+Mascaret-28,0.0,0.0,0.0,0.0
+Mascaret-4,0.0,0.0,0.0,0.0
+Mascotte,0.0,0.0,0.0,0.0
+Matrero II,0.0,0.0,0.0,0.0
+Mauritania,0.0,0.0,0.0,0.0
+Mauritius-1,0.0,0.0,0.0,0.0
+Mauritius-2,0.0,0.0,0.0,0.0
+May Be,0.0,0.0,0.0,0.0
+May Be VII,0.0,0.0,0.0,0.0
+May-Be 1960,0.0,0.0,0.0,0.0
+Mebi,0.0,0.0,0.0,0.0
+Merope,0.0,0.0,0.0,0.0
+Merope III,0.0,0.0,0.0,0.0
+Meteor,0.0,0.0,0.0,0.0
+Micronesia,0.0,0.0,0.0,0.0
+Mignon-29,0.0,0.0,0.0,0.0
+Mignon-3,0.0,0.0,0.0,0.0
+Sarcelle-35,0.0,0.0,0.0,0.0
+"Milwaukee Turnverein, Milwaukee",0.0,0.0,0.0,0.0
+Minerva Amsterdam,0.0,0.0,0.0,0.0
+Minotaur,0.0,0.0,0.0,0.0
+Mirtala,0.0,0.0,0.0,0.0
+Marmara,0.0,0.0,0.0,0.0
+Marie-Tim,0.0,0.0,0.0,0.0
+Norwegian Rowing Association,0.0,0.0,0.0,0.0
+Mari,0.0,0.0,0.0,0.0
+Lucky Star,0.0,0.0,0.0,0.0
+Ludwigshafener Ruder Verein-1,0.0,0.0,0.0,0.0
+Ludwigshafener Ruderverein,0.0,0.0,0.0,0.0
+Lully II,0.0,0.0,0.0,0.0
+Luxembourg,0.0,0.0,0.0,0.0
+Lyn-2,0.0,0.0,0.0,0.0
+Lynn,0.0,0.0,0.0,0.0
+Ma'Lindo,0.0,0.0,0.0,0.0
+Mac Miche,0.0,0.0,0.0,0.0
+Macedonia,0.0,0.0,0.0,0.0
+Macky VI,0.0,0.0,0.0,0.0
+Mad Dog,0.0,0.0,0.0,0.0
+Madagascar,0.0,0.0,0.0,0.0
+Magda IX,0.0,0.0,0.0,0.0
+Magdalen College Boat Club-1,0.0,0.0,0.0,0.0
+Maid of Lebanon,0.0,0.0,0.0,0.0
+Mainz,0.0,0.0,0.0,0.0
+Malawi,0.0,0.0,0.0,0.0
+Malaya,0.0,0.0,0.0,0.0
+Malaysia-1,0.0,0.0,0.0,0.0
+Malaysia-2,0.0,0.0,0.0,0.0
+Maldives,0.0,0.0,0.0,0.0
+Mali,0.0,0.0,0.0,0.0
+Malta,0.0,0.0,0.0,0.0
+Mamie-4,0.0,0.0,0.0,0.0
+Mamie-6,0.0,0.0,0.0,0.0
+Manana,0.0,0.0,0.0,0.0
+Marga-2,0.0,0.0,0.0,0.0
+Margaret,0.0,0.0,0.0,0.0
+Miss Denmark 1964,0.0,0.0,0.0,0.0
+Miss Nippon IV,0.0,0.0,0.0,0.0
+Miss Nippon V,0.0,0.0,0.0,0.0
+Missouri Athletic Club-3,0.0,0.0,0.0,0.0
+New York Athletic Club,0.0,0.0,0.0,0.0
+New York Athletic Club #1-1,0.0,0.0,0.0,0.0
+New York Athletic Club #2-4,0.0,0.0,0.0,0.0
+New York Athletic Club-1,0.0,0.0,0.0,0.0
+New York Athletic Club-4,0.0,0.0,0.0,0.0
+"New York Turnverein, New York",0.0,0.0,0.0,0.0
+Newfoundland,0.0,0.0,0.0,0.0
+Nicaragua,0.0,0.0,0.0,0.0
+Nigeria-1,0.0,0.0,0.0,0.0
+Nigeria-2,0.0,0.0,0.0,0.0
+Nikh,0.0,0.0,0.0,0.0
+Nina,0.0,0.0,0.0,0.0
+Nina Claire-2,0.0,0.0,0.0,0.0
+Nina Claire-30,0.0,0.0,0.0,0.0
+Nirefs,0.0,0.0,0.0,0.0
+Nirwana,0.0,0.0,0.0,0.0
+Nokaut II,0.0,0.0,0.0,0.0
+Nora,0.0,0.0,0.0,0.0
+Noreg,0.0,0.0,0.0,0.0
+Norman-1,0.0,0.0,0.0,0.0
+Norna,0.0,0.0,0.0,0.0
+Nortazo,0.0,0.0,0.0,0.0
+North Borneo,0.0,0.0,0.0,0.0
+North Korea-1,0.0,0.0,0.0,0.0
+North Korea-2,0.0,0.0,0.0,0.0
+North Yemen,0.0,0.0,0.0,0.0
+Norway-1,0.0,0.0,0.0,0.0
+Norway-2,0.0,0.0,0.0,0.0
+Norway-3,0.0,0.0,0.0,0.0
+"New College, Oxford-2",0.0,0.0,0.0,0.0
+Netherlands-2,0.0,0.0,0.0,0.0
+Netherlands Antilles,0.0,0.0,0.0,0.0
+Mozambique,0.0,0.0,0.0,0.0
+Mistral Hojris,0.0,0.0,0.0,0.0
+MitaII,0.0,0.0,0.0,0.0
+Mizar,0.0,0.0,0.0,0.0
+Mohawk Indians-2,0.0,0.0,0.0,0.0
+Monaco,0.0,0.0,0.0,0.0
+Mongolia,0.0,0.0,0.0,0.0
+Monica,0.0,0.0,0.0,0.0
+Moorina,0.0,0.0,0.0,0.0
+Morena,0.0,0.0,0.0,0.0
+Moseley Wanderers,0.0,0.0,0.0,0.0
+Mosk II,0.0,0.0,0.0,0.0
+Mouchette-2,0.0,0.0,0.0,0.0
+Mound City Rowing Club-2,0.0,0.0,0.0,0.0
+Mutafo,0.0,0.0,0.0,0.0
+Neptun II,0.0,0.0,0.0,0.0
+Myanmar,0.0,0.0,0.0,0.0
+Myojo,0.0,0.0,0.0,0.0
+Mystery,0.0,0.0,0.0,0.0
+Mythilus,0.0,0.0,0.0,0.0
+Nadine,0.0,0.0,0.0,0.0
+Naiad,0.0,0.0,0.0,0.0
+Namoussa,0.0,0.0,0.0,0.0
+Nan-2,0.0,0.0,0.0,0.0
+Nauru,0.0,0.0,0.0,0.0
+Nausikaa 4,0.0,0.0,0.0,0.0
+Nautikos Omilos-3,0.0,0.0,0.0,0.0
+Nepal,0.0,0.0,0.0,0.0
+Nephos I,0.0,0.0,0.0,0.0
+Sarcelle-3,0.0,0.0,0.0,0.0
+South Sudan,0.0,0.0,0.0,0.0
+Saskia,0.0,0.0,0.0,0.0
+Tutti V,0.0,0.0,0.0,0.0
+Twinkle,0.0,0.0,0.0,0.0
+Twins II,0.0,0.0,0.0,0.0
+Twins VIII,0.0,0.0,0.0,0.0
+UA Emirates,0.0,0.0,0.0,0.0
+USFSA,0.0,0.0,0.0,0.0
+Ubu,0.0,0.0,0.0,0.0
+Ukraine-1,0.0,0.0,0.0,0.0
+Ukraine-2,0.0,0.0,0.0,0.0
+Umberta V,0.0,0.0,0.0,0.0
+Unified Team,0.0,0.0,0.0,0.0
+Unified Team-1,0.0,0.0,0.0,0.0
+Unified Team-2,0.0,0.0,0.0,0.0
+Union des Socits Franais de Sports Athletiques,0.0,0.0,0.0,0.0
+Unique,0.0,0.0,0.0,0.0
+United Arab Republic,0.0,0.0,0.0,0.0
+United States Golf Association-3,0.0,0.0,0.0,0.0
+United States Virgin Islands,0.0,0.0,0.0,0.0
+United States-10,0.0,0.0,0.0,0.0
+United States-11,0.0,0.0,0.0,0.0
+United States-12,0.0,0.0,0.0,0.0
+United States-13,0.0,0.0,0.0,0.0
+United States-14,0.0,0.0,0.0,0.0
+United States-3,0.0,0.0,0.0,0.0
+United States-4,0.0,0.0,0.0,0.0
+United States-5,0.0,0.0,0.0,0.0
+United States-6,0.0,0.0,0.0,0.0
+United States-7,0.0,0.0,0.0,0.0
+United States-8,0.0,0.0,0.0,0.0
+United States-9,0.0,0.0,0.0,0.0
+Tuvalu,0.0,0.0,0.0,0.0
+Turquoise-3,0.0,0.0,0.0,0.0
+United States/Great Britain,0.0,0.0,0.0,0.0
+Turquoise-1,0.0,0.0,0.0,0.0
+Three Leaves,0.0,0.0,0.0,0.0
+Three Star Too,0.0,0.0,0.0,0.0
+Tichiboo,0.0,0.0,0.0,0.0
+Tilly,0.0,0.0,0.0,0.0
+Tim-Tam III,0.0,0.0,0.0,0.0
+Timor Leste,0.0,0.0,0.0,0.0
+Timor-Leste,0.0,0.0,0.0,0.0
+Tineke,0.0,0.0,0.0,0.0
+Tip,0.0,0.0,0.0,0.0
+Titia,0.0,0.0,0.0,0.0
+Tlaloc,0.0,0.0,0.0,0.0
+Tom Kyle,0.0,0.0,0.0,0.0
+Tomahawk II,0.0,0.0,0.0,0.0
+Tonga,0.0,0.0,0.0,0.0
+Tornade-16,0.0,0.0,0.0,0.0
+Tornado,0.0,0.0,0.0,0.0
+Toronto Argonauts,0.0,0.0,0.0,0.0
+Tournade-40,0.0,0.0,0.0,0.0
+Tramontane,0.0,0.0,0.0,0.0
+Trans-Mississippi Golf Association-2,0.0,0.0,0.0,0.0
+Trickson VI,0.0,0.0,0.0,0.0
+Trinidad and Tobago,0.0,0.0,0.0,0.0
+Trintel II,0.0,0.0,0.0,0.0
+Tritons Lillois-2,0.0,0.0,0.0,0.0
+Tu-Fri,0.0,0.0,0.0,0.0
+Tulilind,0.0,0.0,0.0,0.0
+Turkmenistan,0.0,0.0,0.0,0.0
+"Turnverein Vorwrts, Chicago",0.0,0.0,0.0,0.0
+"Turnverein Vorwrts, Cleveland",0.0,0.0,0.0,0.0
+United States/France,0.0,0.0,0.0,0.0
+Univ. of Brussels,0.0,0.0,0.0,0.0
+Sass-2,0.0,0.0,0.0,0.0
+West Germany-2,0.0,0.0,0.0,0.0
+West Indies Federation,0.0,0.0,0.0,0.0
+Western Golf Association-1,0.0,0.0,0.0,0.0
+Western Rowing Club-3,0.0,0.0,0.0,0.0
+Whirlaway,0.0,0.0,0.0,0.0
+Whisper,0.0,0.0,0.0,0.0
+White Lady,0.0,0.0,0.0,0.0
+Whitini Star,0.0,0.0,0.0,0.0
+Widgeon,0.0,0.0,0.0,0.0
+Wiking,0.0,0.0,0.0,0.0
+Willem-Six,0.0,0.0,0.0,0.0
+Windor,0.0,0.0,0.0,0.0
+Winnipeg Shamrocks-1,0.0,0.0,0.0,0.0
+Wolseley-Siddeley-1,0.0,0.0,0.0,0.0
+Xantippa,0.0,0.0,0.0,0.0
+Xolotl,0.0,0.0,0.0,0.0
+Yangon,0.0,0.0,0.0,0.0
+Yemen,0.0,0.0,0.0,0.0
+Yeoman,0.0,0.0,0.0,0.0
+Yeoman V,0.0,0.0,0.0,0.0
+Yeoman VII,0.0,0.0,0.0,0.0
+Yeoman XII,0.0,0.0,0.0,0.0
+Ylliam II,0.0,0.0,0.0,0.0
+Ylliam VII,0.0,0.0,0.0,0.0
+Ylliam VIII,0.0,0.0,0.0,0.0
+Yugoslavia,0.0,0.0,0.0,0.0
+Yugoslavia-1,0.0,0.0,0.0,0.0
+Yugoslavia-2,0.0,0.0,0.0,0.0
+Zefyros,0.0,0.0,0.0,0.0
+Zut,0.0,0.0,0.0,0.0
+West Germany-3,0.0,0.0,0.0,0.0
+West Germany-1,0.0,0.0,0.0,0.0
+Unknown,0.0,0.0,0.0,0.0
+West Germany,0.0,0.0,0.0,0.0
+Upton Park FC,0.0,0.0,0.0,0.0
+Uragan,0.0,0.0,0.0,0.0
+Uruguay,0.0,0.0,0.0,0.0
+Vanuatu,0.0,0.0,0.0,0.0
+Vaxholm Roddklubb,0.0,0.0,0.0,0.0
+Venilia,0.0,0.0,0.0,0.0
+Vento Sul,0.0,0.0,0.0,0.0
+Verveine-19,0.0,0.0,0.0,0.0
+Verveine-41,0.0,0.0,0.0,0.0
+Vesania,0.0,0.0,0.0,0.0
+Vesper Boat Club,0.0,0.0,0.0,0.0
+Vicking,0.0,0.0,0.0,0.0
+Vietnam,0.0,0.0,0.0,0.0
+Viking,0.0,0.0,0.0,0.0
+Viktoriya,0.0,0.0,0.0,0.0
+Vim III,0.0,0.0,0.0,0.0
+Vinga-1,0.0,0.0,0.0,0.0
+Vinha,0.0,0.0,0.0,0.0
+Virgin Islands,0.0,0.0,0.0,0.0
+"Virgin Islands, B",0.0,0.0,0.0,0.0
+"Virgin Islands, US",0.0,0.0,0.0,0.0
+Virginie,0.0,0.0,0.0,0.0
+Vision,0.0,0.0,0.0,0.0
+Voloira II,0.0,0.0,0.0,0.0
+Wales-4,0.0,0.0,0.0,0.0
+Wannsee,0.0,0.0,0.0,0.0
+Web II,0.0,0.0,0.0,0.0
+Web III,0.0,0.0,0.0,0.0
+Wendehals,0.0,0.0,0.0,0.0
+Thessalonki-1,0.0,0.0,0.0,0.0
+The Gambia,0.0,0.0,0.0,0.0
+The Cloud,0.0,0.0,0.0,0.0
+Singapore-2,0.0,0.0,0.0,0.0
+Singy-7,0.0,0.0,0.0,0.0
+Sirene,0.0,0.0,0.0,0.0
+Sjhxa,0.0,0.0,0.0,0.0
+Sjovinge,0.0,0.0,0.0,0.0
+Skidoo,0.0,0.0,0.0,0.0
+Skum,0.0,0.0,0.0,0.0
+Slaghoken,0.0,0.0,0.0,0.0
+Slaghoken II,0.0,0.0,0.0,0.0
+Slovakia-1,0.0,0.0,0.0,0.0
+Slovakia-2,0.0,0.0,0.0,0.0
+Slovenia-1,0.0,0.0,0.0,0.0
+Slovenia-2,0.0,0.0,0.0,0.0
+Smyrna,0.0,0.0,0.0,0.0
+Snap,0.0,0.0,0.0,0.0
+Snowten III,0.0,0.0,0.0,0.0
+Snude,0.0,0.0,0.0,0.0
+"Socialer Turnverein, Detroit",0.0,0.0,0.0,0.0
+Societ Nautique de la Marne,0.0,0.0,0.0,0.0
+Societ Nautique de la Marne-1,0.0,0.0,0.0,0.0
+Societ Nautique de la Marne-3,0.0,0.0,0.0,0.0
+Socit Nautique de Bayonne,0.0,0.0,0.0,0.0
+Socit Nautique de Bayonne-1,0.0,0.0,0.0,0.0
+Socit Nautique de Bayonne-2,0.0,0.0,0.0,0.0
+Socit Nautique de la Basse Seine-1,0.0,0.0,0.0,0.0
+Socit Nautique de la Basse Seine-2,0.0,0.0,0.0,0.0
+Solomon Islands,0.0,0.0,0.0,0.0
+Solos Carex,0.0,0.0,0.0,0.0
+Somalia,0.0,0.0,0.0,0.0
+Sonja II,0.0,0.0,0.0,0.0
+Singy-37,0.0,0.0,0.0,0.0
+Singapore-1,0.0,0.0,0.0,0.0
+Thames Rowing Club,0.0,0.0,0.0,0.0
+Silja,0.0,0.0,0.0,0.0
+Satchmo,0.0,0.0,0.0,0.0
+Saudi Arabia,0.0,0.0,0.0,0.0
+Scamasaxe-2,0.0,0.0,0.0,0.0
+Scamasaxe-3,0.0,0.0,0.0,0.0
+Scamasaxe-34,0.0,0.0,0.0,0.0
+Scaup,0.0,0.0,0.0,0.0
+Scotia,0.0,0.0,0.0,0.0
+Scotland,0.0,0.0,0.0,0.0
+Scotland-2,0.0,0.0,0.0,0.0
+Scotland-3,0.0,0.0,0.0,0.0
+Scram,0.0,0.0,0.0,0.0
+Sea Dog-2,0.0,0.0,0.0,0.0
+Seawanhaka Boat Club-1,0.0,0.0,0.0,0.0
+Senegal,0.0,0.0,0.0,0.0
+Serbia and Montenegro,0.0,0.0,0.0,0.0
+Serbia-1,0.0,0.0,0.0,0.0
+Serbia-2,0.0,0.0,0.0,0.0
+Serendipity,0.0,0.0,0.0,0.0
+Seychelles,0.0,0.0,0.0,0.0
+Sheerio,0.0,0.0,0.0,0.0
+Shoveller,0.0,0.0,0.0,0.0
+Shrew II,0.0,0.0,0.0,0.0
+Siames-Cat,0.0,0.0,0.0,0.0
+Sibindi-2,0.0,0.0,0.0,0.0
+Sidi Fekkar-36,0.0,0.0,0.0,0.0
+Sidi-Fekkar-14,0.0,0.0,0.0,0.0
+Sierra Leone,0.0,0.0,0.0,0.0
+Sif,0.0,0.0,0.0,0.0
+Sildra-1,0.0,0.0,0.0,0.0
+Sorais-2,0.0,0.0,0.0,0.0
+Souriceau-38,0.0,0.0,0.0,0.0
+Souriceau-4,0.0,0.0,0.0,0.0
+South Africa-1,0.0,0.0,0.0,0.0
+Surprise,0.0,0.0,0.0,0.0
+Suzon IV-39,0.0,0.0,0.0,0.0
+Suzon IV-5,0.0,0.0,0.0,0.0
+Suzy-2,0.0,0.0,0.0,0.0
+Swaziland,0.0,0.0,0.0,0.0
+Sweden-1,0.0,0.0,0.0,0.0
+Sweden-3,0.0,0.0,0.0,0.0
+Sweden-4,0.0,0.0,0.0,0.0
+Swedish Star,0.0,0.0,0.0,0.0
+Swift,0.0,0.0,0.0,0.0
+Switzerland-1,0.0,0.0,0.0,0.0
+Switzerland-2,0.0,0.0,0.0,0.0
+Sydney Rowing Club,0.0,0.0,0.0,0.0
+Sylvia,0.0,0.0,0.0,0.0
+Symphony,0.0,0.0,0.0,0.0
+Syndi,0.0,0.0,0.0,0.0
+São Tomé and Príncipe,0.0,0.0,0.0,0.0
+Taifun,0.0,0.0,0.0,0.0
+Tajamar,0.0,0.0,0.0,0.0
+Tan-Fe-Pah,0.0,0.0,0.0,0.0
+Tango,0.0,0.0,0.0,0.0
+Tantalus,0.0,0.0,0.0,0.0
+Tanzania,0.0,0.0,0.0,0.0
+Tengiri,0.0,0.0,0.0,0.0
+Teresita,0.0,0.0,0.0,0.0
+Terrible,0.0,0.0,0.0,0.0
+Thailand-1,0.0,0.0,0.0,0.0
+Thailand-2,0.0,0.0,0.0,0.0
+Thalatta,0.0,0.0,0.0,0.0
+Suriname,0.0,0.0,0.0,0.0
+Sunshine,0.0,0.0,0.0,0.0
+Sunrise,0.0,0.0,0.0,0.0
+St Kitts and Nevis,0.0,0.0,0.0,0.0
+South Africa-2,0.0,0.0,0.0,0.0
+South Korea-2,0.0,0.0,0.0,0.0
+"South St Louis Turnverein, St Louis",0.0,0.0,0.0,0.0
+Lucky,0.0,0.0,0.0,0.0
+South Vietnam,0.0,0.0,0.0,0.0
+South Yemen,0.0,0.0,0.0,0.0
+Souvenance,0.0,0.0,0.0,0.0
+Soviet Union,0.0,0.0,0.0,0.0
+Spirit III,0.0,0.0,0.0,0.0
+Spirit VI,0.0,0.0,0.0,0.0
+Springbok,0.0,0.0,0.0,0.0
+Squid III,0.0,0.0,0.0,0.0
+Sri Lanka,0.0,0.0,0.0,0.0
+St. Louis Amateur Athletic Association,0.0,0.0,0.0,0.0
+Sudan,0.0,0.0,0.0,0.0
+St. Louis Southwest Turnverein #1-2,0.0,0.0,0.0,0.0
+St. Louis Southwest Turnverein #2-3,0.0,0.0,0.0,0.0
+St. Margrite,0.0,0.0,0.0,0.0
+St. Rose-2,0.0,0.0,0.0,0.0
+StVincent&Grenadines,0.0,0.0,0.0,0.0
+Stade Franais AC-2,0.0,0.0,0.0,0.0
+Starita,0.0,0.0,0.0,0.0
+Starlight III,0.0,0.0,0.0,0.0
+State VI,0.0,0.0,0.0,0.0
+Stella-2,0.0,0.0,0.0,0.0
+Struten,0.0,0.0,0.0,0.0
+Studenternes Roklub-2,0.0,0.0,0.0,0.0
+Subbnboana,0.0,0.0,0.0,0.0
+Lucky Girl-1,0.0,0.0,0.0,0.0
+Japan-2,0.0,0.0,0.0,0.0
+Lotta IV,0.0,0.0,0.0,0.0
+Caprice,0.0,0.0,0.0,0.0
+Carabinier-5,0.0,0.0,0.0,0.0
+Cayman Islands,0.0,0.0,0.0,0.0
+Centr Afric Re,0.0,0.0,0.0,0.0
+Central African Republic,0.0,0.0,0.0,0.0
+"Central Turnverein, Chicago",0.0,0.0,0.0,0.0
+Century Boat Club-1,0.0,0.0,0.0,0.0
+Cercle Nautique de Reims-4,0.0,0.0,0.0,0.0
+Cercle de l'Aviron Roubaix-4,0.0,0.0,0.0,0.0
+Ceres II,0.0,0.0,0.0,0.0
+Cha-Cha III,0.0,0.0,0.0,0.0
+Chad,0.0,0.0,0.0,0.0
+Chaje II,0.0,0.0,0.0,0.0
+Chamukina,0.0,0.0,0.0,0.0
+Chance,0.0,0.0,0.0,0.0
+Chicago Archers,0.0,0.0,0.0,0.0
+Chicago Athletic Association,0.0,0.0,0.0,0.0
+Chicago Athletic Association-2,0.0,0.0,0.0,0.0
+China-3,0.0,0.0,0.0,0.0
+Chinese Taipei-1,0.0,0.0,0.0,0.0
+Chinese Taipei-2,0.0,0.0,0.0,0.0
+Chok,0.0,0.0,0.0,0.0
+Christian Brothers' College-1,0.0,0.0,0.0,0.0
+Chuckles,0.0,0.0,0.0,0.0
+Cicely-1,0.0,0.0,0.0,0.0
+Cinara-13,0.0,0.0,0.0,0.0
+Cincinnati Archers,0.0,0.0,0.0,0.0
+Ciocca,0.0,0.0,0.0,0.0
+Ciocca II,0.0,0.0,0.0,0.0
+Ciocca III,0.0,0.0,0.0,0.0
+Carabinier-15,0.0,0.0,0.0,0.0
+Cape Verde,0.0,0.0,0.0,0.0
+Ciss,0.0,0.0,0.0,0.0
+Canopus,0.0,0.0,0.0,0.0
+British Virgin Islands,0.0,0.0,0.0,0.0
+Bronia,0.0,0.0,0.0,0.0
+Brunei,0.0,0.0,0.0,0.0
+Brunei Darussalam,0.0,0.0,0.0,0.0
+Brussels Swimming and Water Polo Club,0.0,0.0,0.0,0.0
+Brynhild-2,0.0,0.0,0.0,0.0
+Bu III,0.0,0.0,0.0,0.0
+Bucintoro Venezia,0.0,0.0,0.0,0.0
+Bucintoro Venezia-1,0.0,0.0,0.0,0.0
+Bulgaria-1,0.0,0.0,0.0,0.0
+Bulgaria-2,0.0,0.0,0.0,0.0
+Buraddoo,0.0,0.0,0.0,0.0
+Burevestnik,0.0,0.0,0.0,0.0
+Burundi,0.0,0.0,0.0,0.0
+Buscape II,0.0,0.0,0.0,0.0
+Bylina-2,0.0,0.0,0.0,0.0
+C.V.A.-14,0.0,0.0,0.0,0.0
+C.V.A.-7,0.0,0.0,0.0,0.0
+Calcinhas,0.0,0.0,0.0,0.0
+Calimucho,0.0,0.0,0.0,0.0
+Calypse II,0.0,0.0,0.0,0.0
+Cambodia,0.0,0.0,0.0,0.0
+Cambria,0.0,0.0,0.0,0.0
+Cambridge University Boat Club-2,0.0,0.0,0.0,0.0
+Camelia,0.0,0.0,0.0,0.0
+Cameroon,0.0,0.0,0.0,0.0
+Camille,0.0,0.0,0.0,0.0
+Canada-1,0.0,0.0,0.0,0.0
+Canada-2,0.0,0.0,0.0,0.0
+Circus,0.0,0.0,0.0,0.0
+Clearwater,0.0,0.0,0.0,0.0
+London City Police-1,0.0,0.0,0.0,0.0
+Cupidon Viking,0.0,0.0,0.0,0.0
+Czech Republic-2,0.0,0.0,0.0,0.0
+Czechoslovakia,0.0,0.0,0.0,0.0
+Czechoslovakia-1,0.0,0.0,0.0,0.0
+Czechoslovakia-2,0.0,0.0,0.0,0.0
+Czechoslovakia-3,0.0,0.0,0.0,0.0
+DR Congo,0.0,0.0,0.0,0.0
+Daisy,0.0,0.0,0.0,0.0
+Damoiselle,0.0,0.0,0.0,0.0
+Damoiselle IV,0.0,0.0,0.0,0.0
+Danaldo,0.0,0.0,0.0,0.0
+Dansk Idrts Forbund,0.0,0.0,0.0,0.0
+Danuta,0.0,0.0,0.0,0.0
+Danzig,0.0,0.0,0.0,0.0
+"Davenport Turngemeinde, Davenport",0.0,0.0,0.0,0.0
+DeRuyter,0.0,0.0,0.0,0.0
+Demi-Mondaine-15,0.0,0.0,0.0,0.0
+Demi-Mondaine-17,0.0,0.0,0.0,0.0
+Democratic Republic of the Congo,0.0,0.0,0.0,0.0
+Denmark-2,0.0,0.0,0.0,0.0
+Denmark-3,0.0,0.0,0.0,0.0
+Denmark-4,0.0,0.0,0.0,0.0
+Denmark/Sweden,0.0,0.0,0.0,0.0
+Deutscher Schwimm Verband Berlin,0.0,0.0,0.0,0.0
+Devon and Somerset Wanderers,0.0,0.0,0.0,0.0
+Diablo,0.0,0.0,0.0,0.0
+Diabolo St Maurice,0.0,0.0,0.0,0.0
+Dick-8,0.0,0.0,0.0,0.0
+Digby,0.0,0.0,0.0,0.0
+Dinah V,0.0,0.0,0.0,0.0
+Cuxhaven,0.0,0.0,0.0,0.0
+Cupidon III,0.0,0.0,0.0,0.0
+Clementine V,0.0,0.0,0.0,0.0
+Cuba-2,0.0,0.0,0.0,0.0
+Club Nautique de Dieppe-5,0.0,0.0,0.0,0.0
+Club Nautique de Franais-1,0.0,0.0,0.0,0.0
+Club Nautique de Lyon-2,0.0,0.0,0.0,0.0
+Cobweb-1,0.0,0.0,0.0,0.0
+Colette-10,0.0,0.0,0.0,0.0
+Colette-12,0.0,0.0,0.0,0.0
+Comanche,0.0,0.0,0.0,0.0
+Combine,0.0,0.0,0.0,0.0
+Comoros,0.0,0.0,0.0,0.0
+Compigne Polo Club,0.0,0.0,0.0,0.0
+Complex II,0.0,0.0,0.0,0.0
+"Concordia Turnverein, St Louis",0.0,0.0,0.0,0.0
+Congo,0.0,0.0,0.0,0.0
+Congo (Brazzaville),0.0,0.0,0.0,0.0
+Congo (Kinshasa),0.0,0.0,0.0,0.0
+Cook Islands,0.0,0.0,0.0,0.0
+Cornwall,0.0,0.0,0.0,0.0
+Costa Rica,0.0,0.0,0.0,0.0
+Covunco III,0.0,0.0,0.0,0.0
+Crabe I-11,0.0,0.0,0.0,0.0
+Crabe I-2,0.0,0.0,0.0,0.0
+Crabe I-3,0.0,0.0,0.0,0.0
+Crabe II-1,0.0,0.0,0.0,0.0
+Crabe II-12,0.0,0.0,0.0,0.0
+Crabe II-4,0.0,0.0,0.0,0.0
+Crete,0.0,0.0,0.0,0.0
+Crocodile-11,0.0,0.0,0.0,0.0
+Crocodile-13,0.0,0.0,0.0,0.0
+Cuba-1,0.0,0.0,0.0,0.0
+Brigantia,0.0,0.0,0.0,0.0
+Briar,0.0,0.0,0.0,0.0
+Breslau,0.0,0.0,0.0,0.0
+Angerburg,0.0,0.0,0.0,0.0
+Anitra,0.0,0.0,0.0,0.0
+Antares,0.0,0.0,0.0,0.0
+Antigua and Barbuda,0.0,0.0,0.0,0.0
+Antwerpia V,0.0,0.0,0.0,0.0
+Apache,0.0,0.0,0.0,0.0
+Aphrodite,0.0,0.0,0.0,0.0
+Arcturus,0.0,0.0,0.0,0.0
+Ardilla,0.0,0.0,0.0,0.0
+Aretusa,0.0,0.0,0.0,0.0
+Argentina-1,0.0,0.0,0.0,0.0
+Argentina-2,0.0,0.0,0.0,0.0
+Argeste,0.0,0.0,0.0,0.0
+Argo II,0.0,0.0,0.0,0.0
+Argonaut Rowing Club,0.0,0.0,0.0,0.0
+Argus,0.0,0.0,0.0,0.0
+Ariel,0.0,0.0,0.0,0.0
+Ariette-10,0.0,0.0,0.0,0.0
+Ariette-8,0.0,0.0,0.0,0.0
+Aruba,0.0,0.0,0.0,0.0
+Aschenbrodel,0.0,0.0,0.0,0.0
+Astrid III,0.0,0.0,0.0,0.0
+Atalanta Boat Club-1,0.0,0.0,0.0,0.0
+Atalanta Boat Club-2,0.0,0.0,0.0,0.0
+Athens-2,0.0,0.0,0.0,0.0
+Atlanta,0.0,0.0,0.0,0.0
+Augsburg,0.0,0.0,0.0,0.0
+Ausonia,0.0,0.0,0.0,0.0
+Australasia,0.0,0.0,0.0,0.0
+Australia-1,0.0,0.0,0.0,0.0
+Angola,0.0,0.0,0.0,0.0
+Angelita,0.0,0.0,0.0,0.0
+Brentina,0.0,0.0,0.0,0.0
+Andromeda,0.0,0.0,0.0,0.0
+30. Februar,0.0,0.0,0.0,0.0
+A North American Team,0.0,0.0,0.0,0.0
+Acipactli,0.0,0.0,0.0,0.0
+Acturus,0.0,0.0,0.0,0.0
+Afghanistan,0.0,0.0,0.0,0.0
+Akatonbo,0.0,0.0,0.0,0.0
+Alain IV,0.0,0.0,0.0,0.0
+Alcaid,0.0,0.0,0.0,0.0
+Alcyon-6,0.0,0.0,0.0,0.0
+Alcyon-7,0.0,0.0,0.0,0.0
+Aldebaran,0.0,0.0,0.0,0.0
+Aldebaran II,0.0,0.0,0.0,0.0
+Aletta,0.0,0.0,0.0,0.0
+Ali-Baba II,0.0,0.0,0.0,0.0
+Ali-Baba IV,0.0,0.0,0.0,0.0
+Ali-Baba IX,0.0,0.0,0.0,0.0
+Ali-Baba VI,0.0,0.0,0.0,0.0
+Allegro,0.0,0.0,0.0,0.0
+Almaz,0.0,0.0,0.0,0.0
+Aloha II,0.0,0.0,0.0,0.0
+Amateur Athletic Association,0.0,0.0,0.0,0.0
+American Samoa,0.0,0.0,0.0,0.0
+Amolgavar,0.0,0.0,0.0,0.0
+Amstel Amsterdam,0.0,0.0,0.0,0.0
+Amulet-3,0.0,0.0,0.0,0.0
+Amulet-7,0.0,0.0,0.0,0.0
+Ancora,0.0,0.0,0.0,0.0
+Andorinha,0.0,0.0,0.0,0.0
+Andorra,0.0,0.0,0.0,0.0
+Australia-2,0.0,0.0,0.0,0.0
+Australia-3,0.0,0.0,0.0,0.0
+Australia/Great Britain,0.0,0.0,0.0,0.0
+Austria-1,0.0,0.0,0.0,0.0
+Berliner Ruderclub,0.0,0.0,0.0,0.0
+Berliner Ruderclub Sport-Borussia-1,0.0,0.0,0.0,0.0
+Berliner Ruderverein von 1876-2,0.0,0.0,0.0,0.0
+Bermudes,0.0,0.0,0.0,0.0
+Bermudian,0.0,0.0,0.0,0.0
+Bhutan,0.0,0.0,0.0,0.0
+Bim,0.0,0.0,0.0,0.0
+Bingo,0.0,0.0,0.0,0.0
+Bissbi,0.0,0.0,0.0,0.0
+Blue Red,0.0,0.0,0.0,0.0
+Bluebottle,0.0,0.0,0.0,0.0
+Boer Team,0.0,0.0,0.0,0.0
+Bohemia,0.0,0.0,0.0,0.0
+Bohemia-1,0.0,0.0,0.0,0.0
+Bohemia-2,0.0,0.0,0.0,0.0
+Bohemia-3,0.0,0.0,0.0,0.0
+Bohemia/Great Britain,0.0,0.0,0.0,0.0
+Bolivia,0.0,0.0,0.0,0.0
+Bona Fide,0.0,0.0,0.0,0.0
+Bonaparte,0.0,0.0,0.0,0.0
+Bonzo,0.0,0.0,0.0,0.0
+Boreas,0.0,0.0,0.0,0.0
+Boreas-2,0.0,0.0,0.0,0.0
+Bosnia & Herzegovina,0.0,0.0,0.0,0.0
+Bosnia and Herzegovina,0.0,0.0,0.0,0.0
+Boston Archers,0.0,0.0,0.0,0.0
+Brandenburg,0.0,0.0,0.0,0.0
+Brat,0.0,0.0,0.0,0.0
+Bremen,0.0,0.0,0.0,0.0
+Bera,0.0,0.0,0.0,0.0
+Benin,0.0,0.0,0.0,0.0
+Bem II,0.0,0.0,0.0,0.0
+Barbados,0.0,0.0,0.0,0.0
+Austria-2,0.0,0.0,0.0,0.0
+"BLO Polo Club, Rugby",0.0,0.0,0.0,0.0
+Babe,0.0,0.0,0.0,0.0
+Baby-1,0.0,0.0,0.0,0.0
+Baby-9,0.0,0.0,0.0,0.0
+Baccara,0.0,0.0,0.0,0.0
+"Bagatelle Polo Club, Paris",0.0,0.0,0.0,0.0
+Bahamas,0.0,0.0,0.0,0.0
+Bajazzo,0.0,0.0,0.0,0.0
+Balaton,0.0,0.0,0.0,0.0
+Ballerina IV,0.0,0.0,0.0,0.0
+Bamba,0.0,0.0,0.0,0.0
+Bangladesh,0.0,0.0,0.0,0.0
+Barco Deloro,0.0,0.0,0.0,0.0
+Bellatrix XIII,0.0,0.0,0.0,0.0
+Barion/Bari-2,0.0,0.0,0.0,0.0
+Barrenjoey,0.0,0.0,0.0,0.0
+Beatrijs III-1,0.0,0.0,0.0,0.0
+Beaver,0.0,0.0,0.0,0.0
+Belarus-1,0.0,0.0,0.0,0.0
+Belarus-2,0.0,0.0,0.0,0.0
+Belgium-1,0.0,0.0,0.0,0.0
+Belgium-2,0.0,0.0,0.0,0.0
+Belgium-3,0.0,0.0,0.0,0.0
+Belgium-4,0.0,0.0,0.0,0.0
+Belize,0.0,0.0,0.0,0.0
+Bella,0.0,0.0,0.0,0.0
+Bellatrix IX,0.0,0.0,0.0,0.0
+Djibouti,0.0,0.0,0.0,0.0
+Djinn,0.0,0.0,0.0,0.0
+Dolfijn,0.0,0.0,0.0,0.0
+Hong Kong-2,0.0,0.0,0.0,0.0
+Humbug V,0.0,0.0,0.0,0.0
+Hungaria,0.0,0.0,0.0,0.0
+Hungaria Evezos Egylet,0.0,0.0,0.0,0.0
+Hungary-1,0.0,0.0,0.0,0.0
+Hungary-2,0.0,0.0,0.0,0.0
+Hungary-3,0.0,0.0,0.0,0.0
+Hurlingham-2,0.0,0.0,0.0,0.0
+Ilderim,0.0,0.0,0.0,0.0
+Impala,0.0,0.0,0.0,0.0
+Inca,0.0,0.0,0.0,0.0
+Independent Rowing Club-3,0.0,0.0,0.0,0.0
+India-1,0.0,0.0,0.0,0.0
+India-2,0.0,0.0,0.0,0.0
+Indonesia-2,0.0,0.0,0.0,0.0
+Inga-Lill XXXXIII,0.0,0.0,0.0,0.0
+Ingegerd,0.0,0.0,0.0,0.0
+Iraq,0.0,0.0,0.0,0.0
+Ireland-1,0.0,0.0,0.0,0.0
+Ireland-2,0.0,0.0,0.0,0.0
+Ireland-3,0.0,0.0,0.0,0.0
+Irene,0.0,0.0,0.0,0.0
+Italia,0.0,0.0,0.0,0.0
+Italy-2,0.0,0.0,0.0,0.0
+Ivory Coast,0.0,0.0,0.0,0.0
+Japan-3,0.0,0.0,0.0,0.0
+Jeanette-25,0.0,0.0,0.0,0.0
+Jeannette-18,0.0,0.0,0.0,0.0
+Jest,0.0,0.0,0.0,0.0
+Jet,0.0,0.0,0.0,0.0
+Hornet,0.0,0.0,0.0,0.0
+Hong Kong-1,0.0,0.0,0.0,0.0
+Gustl XI,0.0,0.0,0.0,0.0
+Hong Kong,0.0,0.0,0.0,0.0
+Guyoni,0.0,0.0,0.0,0.0
+Gwendoline-2,0.0,0.0,0.0,0.0
+Gwendoline-22,0.0,0.0,0.0,0.0
+GyoshuII,0.0,0.0,0.0,0.0
+Gyp-23,0.0,0.0,0.0,0.0
+Gyp-6,0.0,0.0,0.0,0.0
+Gyrinus-1,0.0,0.0,0.0,0.0
+Haiti,0.0,0.0,0.0,0.0
+Hakahana,0.0,0.0,0.0,0.0
+Hamburg,0.0,0.0,0.0,0.0
+Hannover,0.0,0.0,0.0,0.0
+Harmony,0.0,0.0,0.0,0.0
+Hatuey,0.0,0.0,0.0,0.0
+Hayama,0.0,0.0,0.0,0.0
+Hb-20,0.0,0.0,0.0,0.0
+Hb-24,0.0,0.0,0.0,0.0
+Heatherbell,0.0,0.0,0.0,0.0
+Heidelberg,0.0,0.0,0.0,0.0
+Heira II,0.0,0.0,0.0,0.0
+Helsingfors R. K.,0.0,0.0,0.0,0.0
+Hera-1,0.0,0.0,0.0,0.0
+Heroine,0.0,0.0,0.0,0.0
+Hi-Hi,0.0,0.0,0.0,0.0
+Hilarius,0.0,0.0,0.0,0.0
+Hirondelle,0.0,0.0,0.0,0.0
+Hojwa,0.0,0.0,0.0,0.0
+Holland,0.0,0.0,0.0,0.0
+Hollandia,0.0,0.0,0.0,0.0
+Honduras,0.0,0.0,0.0,0.0
+Jill,0.0,0.0,0.0,0.0
+Jo,0.0,0.0,0.0,0.0
+Johan,0.0,0.0,0.0,0.0
+John B,0.0,0.0,0.0,0.0
+Lancet,0.0,0.0,0.0,0.0
+Lao PDR,0.0,0.0,0.0,0.0
+Laos,0.0,0.0,0.0,0.0
+"Large boat, Central Naval Prep School ""Poros""-1",0.0,0.0,0.0,0.0
+Lasha,0.0,0.0,0.0,0.0
+Latvia-2,0.0,0.0,0.0,0.0
+Laurea-1,0.0,0.0,0.0,0.0
+Lbeck,0.0,0.0,0.0,0.0
+Leander Club #1-1,0.0,0.0,0.0,0.0
+Leander Club #2-2,0.0,0.0,0.0,0.0
+Leander Club-1,0.0,0.0,0.0,0.0
+Leander Club-2,0.0,0.0,0.0,0.0
+Lebanon,0.0,0.0,0.0,0.0
+Legionario,0.0,0.0,0.0,0.0
+Leipzig,0.0,0.0,0.0,0.0
+"Lemzos Thorichton ""Psara""-3",0.0,0.0,0.0,0.0
+"Lemzos Thorichton ""Spetsai""-4",0.0,0.0,0.0,0.0
+Lerina,0.0,0.0,0.0,0.0
+Lesotho,0.0,0.0,0.0,0.0
+Lett,0.0,0.0,0.0,0.0
+Libellule de Paris,0.0,0.0,0.0,0.0
+Libellule de Paris-3,0.0,0.0,0.0,0.0
+Liberia,0.0,0.0,0.0,0.0
+Libya,0.0,0.0,0.0,0.0
+Liechtenstein,0.0,0.0,0.0,0.0
+"Life boat naval ship ""Spetsai""-1",0.0,0.0,0.0,0.0
+Linglom,0.0,0.0,0.0,0.0
+Liverpool Police Team-2,0.0,0.0,0.0,0.0
+Llanoria,0.0,0.0,0.0,0.0
+Lalage,0.0,0.0,0.0,0.0
+Lady C,0.0,0.0,0.0,0.0
+LaBandera,0.0,0.0,0.0,0.0
+Kiribati,0.0,0.0,0.0,0.0
+Joy,0.0,0.0,0.0,0.0
+June Climene,0.0,0.0,0.0,0.0
+Jupiter,0.0,0.0,0.0,0.0
+K Division Metropolitan Police Team-3,0.0,0.0,0.0,0.0
+K.S.S.S. 1912-2,0.0,0.0,0.0,0.0
+KNS,0.0,0.0,0.0,0.0
+Kalayaan,0.0,0.0,0.0,0.0
+Kannibaltje,0.0,0.0,0.0,0.0
+Kathleen,0.0,0.0,0.0,0.0
+Kemphaan,0.0,0.0,0.0,0.0
+Kerstin-1,0.0,0.0,0.0,0.0
+Kiel,0.0,0.0,0.0,0.0
+Kingfisher,0.0,0.0,0.0,0.0
+Kitty-1,0.0,0.0,0.0,0.0
+"La Salle Turnverein, Chicago",0.0,0.0,0.0,0.0
+Kln,0.0,0.0,0.0,0.0
+Knigsberg,0.0,0.0,0.0,0.0
+Kon-Tiki,0.0,0.0,0.0,0.0
+Konstanz,0.0,0.0,0.0,0.0
+Korshun,0.0,0.0,0.0,0.0
+Kristiania Roklub,0.0,0.0,0.0,0.0
+Kristiania Roklub-1,0.0,0.0,0.0,0.0
+Kuling,0.0,0.0,0.0,0.0
+Kullan,0.0,0.0,0.0,0.0
+Kurush II,0.0,0.0,0.0,0.0
+Kurush IV,0.0,0.0,0.0,0.0
+Kuwait,0.0,0.0,0.0,0.0
+L'Aile VI,0.0,0.0,0.0,0.0
+Guyana,0.0,0.0,0.0,0.0
+Gustel X,0.0,0.0,0.0,0.0
+Don Schufro,0.0,0.0,0.0,0.0
+Espadarte,0.0,0.0,0.0,0.0
+Esperia,0.0,0.0,0.0,0.0
+Espuma del Mar,0.0,0.0,0.0,0.0
+Essen,0.0,0.0,0.0,0.0
+Esterel-1,0.0,0.0,0.0,0.0
+Eswatini,0.0,0.0,0.0,0.0
+Ethnikos Gymnastikos Syllogos,0.0,0.0,0.0,0.0
+Evita VI,0.0,0.0,0.0,0.0
+Fada,0.0,0.0,0.0,0.0
+Falcon IV,0.0,0.0,0.0,0.0
+Falcon VI,0.0,0.0,0.0,0.0
+Faneca,0.0,0.0,0.0,0.0
+Fantasio III,0.0,0.0,0.0,0.0
+Fantlet-2,0.0,0.0,0.0,0.0
+Fantlet-7,0.0,0.0,0.0,0.0
+Favorite Hammonia-3,0.0,0.0,0.0,0.0
+Favorite-1,0.0,0.0,0.0,0.0
+Favorite-17,0.0,0.0,0.0,0.0
+Federated States of Micronesia,0.0,0.0,0.0,0.0
+Femur-1,0.0,0.0,0.0,0.0
+Femur-18,0.0,0.0,0.0,0.0
+Feo,0.0,0.0,0.0,0.0
+Finland-1,0.0,0.0,0.0,0.0
+Finland-2,0.0,0.0,0.0,0.0
+Finn II,0.0,0.0,0.0,0.0
+Firebird II,0.0,0.0,0.0,0.0
+Floresco,0.0,0.0,0.0,0.0
+Formosa,0.0,0.0,0.0,0.0
+Fornebo,0.0,0.0,0.0,0.0
+Fortuna,0.0,0.0,0.0,0.0
+Espardate,0.0,0.0,0.0,0.0
+Escapade,0.0,0.0,0.0,0.0
+Gustel V,0.0,0.0,0.0,0.0
+Erna Signe,0.0,0.0,0.0,0.0
+Donar III,0.0,0.0,0.0,0.0
+Dormy-1,0.0,0.0,0.0,0.0
+Dow Jones,0.0,0.0,0.0,0.0
+Dresden,0.0,0.0,0.0,0.0
+Druzhba,0.0,0.0,0.0,0.0
+Ducky-16,0.0,0.0,0.0,0.0
+Ducky-4,0.0,0.0,0.0,0.0
+Dylan-2,0.0,0.0,0.0,0.0
+EA II,0.0,0.0,0.0,0.0
+East Germany,0.0,0.0,0.0,0.0
+East Germany-1,0.0,0.0,0.0,0.0
+East Germany-2,0.0,0.0,0.0,0.0
+East Germany-3,0.0,0.0,0.0,0.0
+East Timor,0.0,0.0,0.0,0.0
+Edelweiss II-1,0.0,0.0,0.0,0.0
+Eissero VI,0.0,0.0,0.0,0.0
+El Salvador,0.0,0.0,0.0,0.0
+Eleda,0.0,0.0,0.0,0.0
+Elisabeth V,0.0,0.0,0.0,0.0
+Elisabeth X,0.0,0.0,0.0,0.0
+Elsie,0.0,0.0,0.0,0.0
+Elvis Va,0.0,0.0,0.0,0.0
+Emily,0.0,0.0,0.0,0.0
+Encore,0.0,0.0,0.0,0.0
+England,0.0,0.0,0.0,0.0
+England-1,0.0,0.0,0.0,0.0
+Enotria,0.0,0.0,0.0,0.0
+Equatorial Guinea,0.0,0.0,0.0,0.0
+Eritrea,0.0,0.0,0.0,0.0
+Foxhunters Hurlingham,0.0,0.0,0.0,0.0
+Fram,0.0,0.0,0.0,0.0
+Fram III,0.0,0.0,0.0,0.0
+France-3,0.0,0.0,0.0,0.0
+Germany-3,0.0,0.0,0.0,0.0
+Germany/United States,0.0,0.0,0.0,0.0
+Gilliatt V,0.0,0.0,0.0,0.0
+Girl Pat,0.0,0.0,0.0,0.0
+Giselle-6,0.0,0.0,0.0,0.0
+Gitana-2,0.0,0.0,0.0,0.0
+Gitana-21,0.0,0.0,0.0,0.0
+Glider,0.0,0.0,0.0,0.0
+Glisten,0.0,0.0,0.0,0.0
+Gran Gesto,0.0,0.0,0.0,0.0
+Great Britain-3,0.0,0.0,0.0,0.0
+Great Britain-4,0.0,0.0,0.0,0.0
+Great Britain/Germany,0.0,0.0,0.0,0.0
+Greece-1,0.0,0.0,0.0,0.0
+Greece-2,0.0,0.0,0.0,0.0
+Greece-3,0.0,0.0,0.0,0.0
+Greece-4,0.0,0.0,0.0,0.0
+Greenoaks Dundee,0.0,0.0,0.0,0.0
+Grifo III,0.0,0.0,0.0,0.0
+Grifo IV,0.0,0.0,0.0,0.0
+Grifone,0.0,0.0,0.0,0.0
+Gteborgs Roddfrening-2,0.0,0.0,0.0,0.0
+Gteborgs Roddklubb-1,0.0,0.0,0.0,0.0
+Guam,0.0,0.0,0.0,0.0
+Guanahani,0.0,0.0,0.0,0.0
+Guinea,0.0,0.0,0.0,0.0
+Guinea Bissau,0.0,0.0,0.0,0.0
+Guinea-Bissau,0.0,0.0,0.0,0.0
+Gullvinge,0.0,0.0,0.0,0.0
+Germany-2,0.0,0.0,0.0,0.0
+"Germania Ruder Club, Hamburg-2",0.0,0.0,0.0,0.0
+"Germania Ruder Club, Hamburg",0.0,0.0,0.0,0.0
+Galejan,0.0,0.0,0.0,0.0
+France-4,0.0,0.0,0.0,0.0
+France/Great Britain,0.0,0.0,0.0,0.0
+Frankfurt Club,0.0,0.0,0.0,0.0
+Freddy,0.0,0.0,0.0,0.0
+Freia-19,0.0,0.0,0.0,0.0
+Freia-5,0.0,0.0,0.0,0.0
+Freja,0.0,0.0,0.0,0.0
+Frieda,0.0,0.0,0.0,0.0
+Frimousse,0.0,0.0,0.0,0.0
+Frip IV,0.0,0.0,0.0,0.0
+Fruits,0.0,0.0,0.0,0.0
+Gabbiano,0.0,0.0,0.0,0.0
+Galatea II,0.0,0.0,0.0,0.0
+Galerna,0.0,0.0,0.0,0.0
+Germania II,0.0,0.0,0.0,0.0
+Gallant,0.0,0.0,0.0,0.0
+Gallia II,0.0,0.0,0.0,0.0
+Galopin De La Font,0.0,0.0,0.0,0.0
+Galopin-20,0.0,0.0,0.0,0.0
+Galopin-9,0.0,0.0,0.0,0.0
+Galt Football Club,0.0,0.0,0.0,0.0
+Gam II,0.0,0.0,0.0,0.0
+Gambia,0.0,0.0,0.0,0.0
+Gem,0.0,0.0,0.0,0.0
+Gem II,0.0,0.0,0.0,0.0
+Gem III,0.0,0.0,0.0,0.0
+Gem IV,0.0,0.0,0.0,0.0
+Gem VII,0.0,0.0,0.0,0.0
+rn-2,0.0,0.0,0.0,0.0

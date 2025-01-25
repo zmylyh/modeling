@@ -8,7 +8,7 @@ medal_data['ss'] = medal_data['Silver'] / medal_data['Total']
 medal_data['bs'] = medal_data['Bronze'] / medal_data['Total']
 team_sport = medal_data[['Team', 'Sport']]
 # medal_data.to_csv('medal_data.csv', index=False)
-train_years = [1968, 1972, 1976, 1980, 1984]
+
 type_dict = {
     'Gold': 'gs',
     'Silver': 'ss',
@@ -18,6 +18,8 @@ comb = medal_data[['Team', 'Sport']].drop_duplicates()
 comb.to_csv('comb.csv', index=False)
 
 def getX0(team, sport, medal_type):
+    # train_years = [1968, 1972, 1976, 1980, 1984]
+    train_years = [2004, 2008, 2012, 2016, 2020]
     x0 = [0] * len(train_years)
     real_sum = 0.0
     real_count = 0
@@ -30,11 +32,24 @@ def getX0(team, sport, medal_type):
         except:
             r = -1
         x0[ith_year] = r
-    if real_count == 0:
+    while real_count == 0:
         # 如果一个都没有，抛出错误，必须是indexerror
-        raise IndexError
+        # raise IndexError
+        if train_years[-1] > 2000:
+            raise IndexError
+        del train_years[0]
+        train_years.append(train_years[-1] + 4)
+        for y in train_years:
+            ith_year = (y - train_years[0]) // 4
+            try:
+                r = medal_data.query(f"(Team==@team) and (Year==@y) and (Sport==@sport)")[type_dict[medal_type]].tolist()[0]
+                real_sum += r
+                real_count += 1
+            except:
+                r = -1
+            x0[ith_year] = r
     if real_sum == 0.0:
-        return np.array([0, 0, 0, 0, 0])
+        return np.array([0] * len(train_years))
     real_average = real_sum / real_count
     # 否则填上平均值
     for i in range(len(x0)):
@@ -70,7 +85,7 @@ def predictOnce(team, sport, medalType):
     # print(delta_k)
     # print("级比误差为：")
     # print(pho_k)
-    return u, x0_pre[len(x):]
+    return delta_k[len(x):], x0_pre[len(x):]
 
 def useParam(team, sport, medalType, param):
     x = getX0(team, sport, medalType)
@@ -111,7 +126,7 @@ for mt in ['Gold', 'Silver', 'Bronze']:
         team = row.Team
         sport = row.Sport
         try:
-            param, pre = predictOnce(team, sport, mt)
+            err, pre = predictOnce(team, sport, mt)
             if mt == 'Gold': gold_result.append(pre[0])
             if mt == 'Silver': silver_result.append(pre[0])
             if mt == 'Bronze': bronze_result.append(pre[0])
@@ -124,4 +139,4 @@ for mt in ['Gold', 'Silver', 'Bronze']:
 comb['goldPre'] = gold_result
 comb['silverPre'] = silver_result
 comb['bronzePre'] = bronze_result
-comb.to_csv('pre.csv', index=False)
+# comb.to_csv('2024pre.csv', index=False)
