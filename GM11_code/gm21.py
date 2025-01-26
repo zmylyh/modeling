@@ -6,6 +6,14 @@ def gm21_predict(data, forecast_steps=10):
     # 步骤 1：原始数据序列
     x0 = np.array(data)  # 原始序列
 
+    shift = 0
+    lambdas = x0[:-1] / x0[1:]
+    
+    while not np.all((lambdas > 0.5) & (lambdas < 1.5)):
+        shift += 1
+        x0 += shift
+        lambdas = x0[:-1] / x0[1:]
+    
     # 步骤 2：一次累加生成（AGO）
     x1 = np.cumsum(x0)  # 累加生成的序列
 
@@ -35,23 +43,27 @@ def gm21_predict(data, forecast_steps=10):
 
     # 步骤 8：返回预测结果
     predicted_values = np.concatenate(([x0[0]], x0_predict))  # 合并第一项与预测数据
-    return predicted_values, x1_predict, x0_predict
 
-# 示例数据：一个简单的时间序列
-data = [100, 120, 150, 180, 210, 250, 300, 360, 430]
+    if shift != 0:
+        predicted_values -= shift
+    # print(len(predicted_values))
+    return predicted_values# , x1_predict, x0_predict
 
-# 进行 GM(2,1) 预测
-predicted_values, x1_predict, x0_predict = gm21_predict(data, forecast_steps=10)
+# # 示例数据：一个简单的时间序列
+# data = [100, 120, 150, 180, 210, 250, 300, 360, 430]
 
-# 打印预测结果
-print("原始数据:", data)
-print("预测结果:", predicted_values)
+# # 进行 GM(2,1) 预测
+# predicted_values, x1_predict, x0_predict = gm21_predict(data, forecast_steps=10)
 
-# 绘制图形
-plt.plot(range(1, len(data)+1), data, 'bo-', label='原始数据')
-plt.plot(range(len(data), len(data)+10), predicted_values[len(data):], 'ro-', label='预测数据')
-plt.legend()
-plt.title('GM(2,1) 预测')
-plt.xlabel('时间')
-plt.ylabel('值')
-plt.show()
+# # 打印预测结果
+# print("原始数据:", data)
+# print("预测结果:", predicted_values)
+
+# # 绘制图形
+# plt.plot(range(1, len(data)+1), data, 'bo-', label='原始数据')
+# plt.plot(range(len(data), len(data)+10), predicted_values[len(data):], 'ro-', label='预测数据')
+# plt.legend()
+# plt.title('GM(2,1) 预测')
+# plt.xlabel('时间')
+# plt.ylabel('值')
+# plt.show()
