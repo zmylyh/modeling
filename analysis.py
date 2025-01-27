@@ -99,7 +99,7 @@ def analyze_sports_advanced():
 
     plt.subplot(1,1,1)
     gender_sport_pivot = pd.crosstab(athletes['Sport'], athletes['Sex'])
-    sns.heatmap(gender_sport_pivot, cmap='YlOrRd', annot=True, fmt='d')
+    sns.heatmap(gender_sport_pivot, cmap='YlOrRd', annot=False, fmt='d')
     plt.title('Gender Participation Heatmap by Sport')
     plt.show()
 
@@ -179,6 +179,8 @@ def analyze_athletes_advanced():
     gold_medalists = athletes[athletes['Medal'] == 'Gold']
     top_athletes = gold_medalists['Name'].value_counts().head(10)
     sns.barplot(x=top_athletes.values, y=top_athletes.index)
+    plt.ylabel('Athletes')
+    plt.xlabel('Gold medals')
     plt.title('Top 10 Athletes by Gold Medals')
     plt.show()
  
@@ -191,10 +193,10 @@ def analyze_athletes_advanced():
    
 
 if __name__ == "__main__":
-    analyze_medals_advanced()
-    analyze_sports_advanced()
-    analyze_hosts_advanced()
-    analyze_athletes_advanced()
+    # analyze_medals_advanced()
+    # analyze_sports_advanced()
+    # analyze_hosts_advanced()
+    # analyze_athletes_advanced()
 
     print("=== Olympic Games Analysis Report ===")
     print("\nTotal Olympics analyzed:", len(hosts))
